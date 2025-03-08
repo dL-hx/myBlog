@@ -3,23 +3,26 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "小李科技"
+  text: "一个VitePress博客"
+  tagline: "记录生活的点点滴滴"
+  image:
+    src: /background.svg
+    alt: 背景图
   actions:
     - theme: brand
-      text: Markdown Examples
+      text: 第一个示例
       link: /markdown-examples
     - theme: alt
-      text: API Examples
+      text: 所有博客
       link: /api-examples
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 特性1
+    details: 特性1的描述
+  - title: 特性2
+    details: 特性2的描述
+  - title: 特性3
+    details: 特性3的描述
 ---
 
