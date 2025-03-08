@@ -22,6 +22,9 @@ export default defineConfig({
       }
     ],
 
+    footer: {
+      copyright: 'Copyright © 2025 dL-hx' 
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/dL-hx' }
     ]
