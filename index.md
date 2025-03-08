@@ -7,7 +7,7 @@ hero:
   text: "一个VitePress博客"
   tagline: "记录生活的点点滴滴"
   image:
-    src: /background.svg
+    src: /background.png
     alt: 背景图
   actions:
     - theme: brand
