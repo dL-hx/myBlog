@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/myBlog/",
-  title: "小李科技的博客",
+  title: "小李科技的博客-文档站",
   description: "A VitePress Site",
   themeConfig: {
     logo: '/logo.svg',
