@@ -6,6 +6,7 @@ export default defineConfig({
   title: "小李科技的博客",
   description: "A VitePress Site",
   themeConfig: {
+    logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
