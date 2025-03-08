@@ -1,1 +1,1 @@
-![example workflow](https://github.com/github/docs/actions/workflows/deploy.yml/badge.svg)
+[![](https://img.shields.io/badge/blog-@champyin-red.svg)](https://champyin.com)
