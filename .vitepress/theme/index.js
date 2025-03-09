@@ -1,8 +1,9 @@
 // https://vitepress.dev/guide/custom-theme
 import { h, onMounted, watch, nextTick } from "vue";
 import DefaultTheme from 'vitepress/theme'
-import mediumZoom from "medium-zoom";
 import { inBrowser, useRoute } from 'vitepress'
+import vitepressNprogress from 'vitepress-plugin-nprogress'
+import mediumZoom from "medium-zoom";
 import Layout from './myLayout.vue'
 import busuanzi from "busuanzi.pure.js";
 
@@ -10,6 +11,7 @@ import VisitorPanel from "./components/VisitorPanel.vue";
 import NotFound from './components/NotFound.vue'
 import Confetti from './components/Confetti.vue'
 
+import 'vitepress-plugin-nprogress/lib/css/index.css'
 import './style.css'
 
 /** @type {import('vitepress').Theme} */
@@ -43,6 +45,7 @@ export default {
     app.component("VisitorPanel", VisitorPanel);
     app.component("Confetti", Confetti);
 
+    vitepressNprogress(ctx);
     if (inBrowser) {
       router.onAfterPageLoad  = () => {
         busuanzi.fetch();
