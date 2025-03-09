@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { set_sidebar } from "../utils/auto-gen-sidebar.mjs";	// 改成自己的路径
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -7,6 +8,18 @@ export default defineConfig({
   description: "A VitePress Site",
   themeConfig: {
     logo: '/logo.svg',
+    head: [['link', { rel: 'icon', href: '/logo.svg' }]],
+    
+    //中文配置
+    langMenuLabel: "多语言", 
+    returnToTopLabel: "回到顶部",
+    sidebarMenuLabel: "菜单",
+    darkModeSwitchLabel: "主题",
+    lightModeSwitchTitle: "切换到浅色模式",
+    darkModeSwitchTitle: "切换到深色模式",
+    outlineTitle: "目录",
+
+    outline: [2, 6],
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
@@ -22,6 +35,48 @@ export default defineConfig({
         ]
       }
     ],
+
+    lastUpdated: {
+      text: '更新时间',
+      formatOptions: { dateStyle: 'short',  timeStyle: 'short' }
+    },
+    // sidebar: { "/front-end/react": set_sidebar("front-end/react") },
+
+    // 设置搜索框样式
+    search: {
+      provider: 'local',
+      //配置中文提示
+      options:{
+        translations: {
+          button: {
+            buttonText: '搜索',
+            buttonAriaLabel: '搜索'
+          },
+          modal: {
+            searchBoxPlaceholder: '搜索文档',
+            resetButtonTitle: '清除查询条件',
+            closeButtonAriaLabel: '关闭搜索',
+            noResultsText: '没有找到结果',
+            footer: {
+              selectText: '选择',
+              noResultsText: '未找到结果',
+              statsText: {
+                one: '1个结果',
+                other: '{n}个结果'
+              },
+              closeText: '关闭',
+              navigateText: '导航到结果'
+            }
+          }
+        }
+      }
+    },
+
+    //文档页脚
+    docFooter: {
+      prev: "上一页",
+      next: "下一页",
+    },
 
     footer: {
       copyright: 'Copyright © 2025 dL-hx' 

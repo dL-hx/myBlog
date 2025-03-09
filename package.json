@@ -3,9 +3,10 @@
     "vitepress": "^1.6.3"
   },
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "start": "vitepress dev",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   },
   "packageManager": "pnpm@8.6.12"
 }
