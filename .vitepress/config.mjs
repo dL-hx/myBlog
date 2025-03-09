@@ -6,10 +6,10 @@ export default defineConfig({
   base: "/myBlog/",
   title: "小李科技的博客-文档站",
   description: "A VitePress Site",
+  head: [["link", { rel: "icon", href: "logo.svg" }]],
+
   themeConfig: {
     logo: '/logo.svg',
-    head: [['link', { rel: 'icon', href: '/logo.svg' }]],
-    
     //中文配置
     langMenuLabel: "多语言", 
     returnToTopLabel: "回到顶部",
