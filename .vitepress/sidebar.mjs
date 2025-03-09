@@ -18,6 +18,8 @@ export default {
     ]
   }
   ],
+  '/fe-mobx/': setSidebar('/fe-mobx/'),
+
   '/fe-components/': setSidebar('/fe-components/'),
   '/fe-small-code/': setSidebar('/fe-small-code/')
   ,

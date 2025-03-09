@@ -13,7 +13,7 @@ export default [
         { text: 'React数据流', 
           items: [
             { text: 'Redux', link: '/fe-redux/' },
-            { text: 'Mobx', link: '/fe/react-router/' },
+            { text: 'Mobx', link: '/fe-mobx/mobx' },
             { text: 'Hooks.formik',   link: '/fe/react-router/' }, 
           ]
         },
