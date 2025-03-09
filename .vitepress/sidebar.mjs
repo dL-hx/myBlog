@@ -18,14 +18,8 @@ export default {
     ]
   }
   ],
-  '/fe/': [
-        {
-          text: 'Guide',
-          items: [
-            { text: 'Index', link: '/api-examples/' },
-          ]
-        }
-   ],
+  '/fe-components/': setSidebar('/fe-components/')
+  ,
   //  '/other/': [
   //   {
   //    text: '案例',

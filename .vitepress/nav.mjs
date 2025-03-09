@@ -18,11 +18,7 @@ export default [
           ]
         },
         { text: '前端组件化', 
-          items: [
-            { text: 'Redux', link: '/fe/react/' },
-            { text: 'Mobx', link: '/fe/react-router/' },
-            { text: 'Hooks',   link: '/fe/react-router/' }, 
-          ]
+          link: '/fe-components/受控组件与非受控组件的选用标准'
         },
         { text: 'Nextjs', link: '/fe/nextjs' },
         { text: 'Typescript', link: '/fe/ts' },
