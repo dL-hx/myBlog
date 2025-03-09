@@ -2,7 +2,7 @@
 outline: deep
 ---
 ## 1.目录结构定义
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/205bf030add2b5ffab52e2eb55b2b09b.png)
+![在这里插入图片描述](./assets/前端Web系统架构设计/205bf030add2b5ffab52e2eb55b2b09b.png)
 
 ## 2. 路由封装
 > react-router6
@@ -122,7 +122,7 @@ export default App
 
 ## 3. Axios请求开发
 [npm:axios](https://www.npmjs.com/package/axios)
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/06a1d5b819ef2d6e23f71cdbb3d217b5.png)
+![在这里插入图片描述](./assets/前端Web系统架构设计/06a1d5b819ef2d6e23f71cdbb3d217b5.png)
 
 ```ts
 import { message } from 'antd'
@@ -191,7 +191,7 @@ export default {
 code: [https://hub.fgit.cf/dL-hx/manager-fe/commit/d60929d13b2dcf69f2563dba5f8e6fb47e4a057f](https://hub.fgit.cf/dL-hx/manager-fe/commit/d60929d13b2dcf69f2563dba5f8e6fb47e4a057f)
 ### 方案一
 > 动态创建loading节点在html页面上
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/5dbf9a0b19b3e2eae01c109a7ad3d409.png)
+![在这里插入图片描述](./assets/前端Web系统架构设计/5dbf9a0b19b3e2eae01c109a7ad3d409.png)
 `src\utils\loading\loading.tsx`
 ```js
 import { Spin } from 'antd'
@@ -252,9 +252,9 @@ code: [https://hub.fgit.cf/dL-hx/manager-fe/commit/b39cf0f128942b2703576d66dd220
 
 在icon font网站复制svg代码插入页面，通过控制SVG元素的`显示隐藏进行Loading`
 [https://www.iconfont.cn/search/index?searchType=icon&q=loading](https://www.iconfont.cn/search/index?searchType=icon&q=loading)
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/285decdad69947083f3e047f9d5f11d5.png)
+![在这里插入图片描述](./assets/前端Web系统架构设计/285decdad69947083f3e047f9d5f11d5.png)
 
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/0716151e36409405eb3d459b4d29f634.png)`index.html`
+![在这里插入图片描述](./assets/前端Web系统架构设计/0716151e36409405eb3d459b4d29f634.png)`index.html`
 
 ```html
 <!doctype html>
@@ -554,7 +554,7 @@ export default {
 ```
 ## 8. 公共函数封装(日期,金额,权限..)
 ### 公共函数
-![在这里插入图片描述](https://i-blog.csdnimg.cn/blog_migrate/5e2c650503c76d7848059dd586de341d.png)
+![在这里插入图片描述](./assets/前端Web系统架构设计/5e2c650503c76d7848059dd586de341d.png)
 
 `src\utils\index.ts`
 ```js

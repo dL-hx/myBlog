@@ -11,6 +11,7 @@ const WHITE_LIST=[
     'README.md',
     '.vitepress',
     'node_modules',
+    'assets',
     'public',
     'package.json',
     'package-lock.json',
