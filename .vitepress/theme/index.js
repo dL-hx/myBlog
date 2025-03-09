@@ -1,8 +1,11 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
-
+import { inBrowser } from 'vitepress'
 import Layout from './myLayout.vue'
+import busuanzi from "busuanzi.pure.js";
+import VisitorPanel from "./components/VisitorPanel.vue";
+
 import './style.css'
 
 /** @type {import('vitepress').Theme} */
@@ -14,16 +17,15 @@ export default {
       'doc-after': () => h(Layout)
     });
   },
-  
-  enhanceApp({ app, router, siteData }) {
-    // 线上环境才上报
-    router.onBeforeRouteChange = (to) => {
-      if (import.meta.env.MODE === 'production') {
-        if (typeof _hmt !=='undefined' && !!to) {
-          _hmt.push(['_trackPageview', to])          
-        }
-        
-      }
-    };
-  }
+
+  enhanceApp( ctx ) {
+    const { app, router, siteData } = ctx;
+    app.component("VisitorPanel", VisitorPanel);
+
+    if (inBrowser) {
+      router.onAfterPageLoad  = () => {
+        busuanzi.fetch();
+      };
+    }
+  },
 }

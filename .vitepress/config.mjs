@@ -9,21 +9,7 @@ export default defineConfig({
   title: "小李科技的博客-文档站",
   description: "A VitePress Site",
   head: [
-    ["link", { rel: "icon", href: "logo.svg" }],
-    [
-      'script',
-      {},
-      `<script>
-        window._hmt = window._hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?f4400c0b2eb0e1b50f3a46a099195c63";
-          var s = document.getElementsByTagName("script")[0]; 
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-        `  
-    ]
+    ["link", { rel: "icon", href: "logo.svg" }]
   ],
 
   

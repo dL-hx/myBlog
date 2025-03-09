@@ -8,6 +8,9 @@ devDependencies:
   '@giscus/vue':
     specifier: ^3.1.1
     version: 3.1.1(vue@3.5.13)
+  busuanzi.pure.js:
+    specifier: ^1.0.3
+    version: 1.0.3
   vitepress:
     specifier: ^1.6.3
     version: 1.6.3(@algolia/client-search@5.20.4)(search-insights@2.17.3)
@@ -950,6 +953,10 @@ packages:
 
   /birpc@0.2.19:
     resolution: {integrity: sha512-5WeXXAvTmitV1RqJFppT5QtUiz2p1mRSYU000Jkft5ZUCLJIk4uQriYNO50HknxKwM6jd8utNc66K1qGIwwWBQ==}
+    dev: true
+
+  /busuanzi.pure.js@1.0.3:
+    resolution: {integrity: sha512-tPULdyx+8NNb9geZYDpktKmHAYx9f2LEOBaHyWCaM7iPEMIa/43KgYAUluuU7YG9UFSOFpj4dO7Nj2Vlu3V9Rg==}
     dev: true
 
   /ccount@2.0.1:
