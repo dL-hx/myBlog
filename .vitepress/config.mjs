@@ -9,7 +9,7 @@ export default defineConfig({
   title: "小李科技的博客-文档站",
   description: "A VitePress Site",
   head: [
-    ["link", { rel: "icon", href: "logo.svg" }
+    ["link", { rel: "icon", href: "logo.svg" }],
     [
       'script',
       {},
@@ -24,8 +24,7 @@ export default defineConfig({
         </script>
         `  
     ]
-
-  ]],
+  ],
 
   
   // https://vitepress.dev/reference/default-theme-config
