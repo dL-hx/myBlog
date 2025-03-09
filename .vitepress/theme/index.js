@@ -13,13 +13,13 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // 线上环境才上报
-    router.onBeforeRouteChange((to) => {
+    router.onBeforeRouteChange = (to) => {
       if (import.meta.env.MODE === 'production') {
         if (typeof _hmt !=='undefined' && !!to) {
           _hmt.push(['_trackPageview', to])          
         }
         
       }
-    })
+    };
   }
 }
