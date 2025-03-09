@@ -3,6 +3,7 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser } from 'vitepress'
 import Layout from './myLayout.vue'
+import NotFound from './components/NotFound.vue'
 import busuanzi from "busuanzi.pure.js";
 import VisitorPanel from "./components/VisitorPanel.vue";
 
@@ -14,7 +15,8 @@ export default {
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
-      'doc-after': () => h(Layout)
+      'doc-after': () => h(Layout),
+      'not-found': () => h(NotFound)
     });
   },
 
