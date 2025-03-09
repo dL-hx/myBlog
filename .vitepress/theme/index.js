@@ -1,6 +1,8 @@
 // https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
+
+import Layout from './myLayout.vue'
 import './style.css'
 
 /** @type {import('vitepress').Theme} */
@@ -9,8 +11,10 @@ export default {
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
+      'doc-after': () => h(Layout)
+    });
   },
+  
   enhanceApp({ app, router, siteData }) {
     // 线上环境才上报
     router.onBeforeRouteChange = (to) => {
