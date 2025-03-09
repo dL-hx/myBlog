@@ -12,6 +12,7 @@ const WHITE_LIST=[
     '.vitepress',
     'node_modules',
     'assets',
+    'media',
     'public',
     'package.json',
     'package-lock.json',

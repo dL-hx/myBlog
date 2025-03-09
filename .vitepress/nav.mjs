@@ -12,7 +12,7 @@ export default [
         },
         { text: 'React数据流', 
           items: [
-            { text: 'Redux', link: '/fe/react/' },
+            { text: 'Redux', link: '/fe-redux/' },
             { text: 'Mobx', link: '/fe/react-router/' },
             { text: 'Hooks.formik',   link: '/fe/react-router/' }, 
           ]
@@ -33,6 +33,10 @@ export default [
         {
           text: '性能优化',
           link: '/fe/perfor-opt/'
+        },
+        {
+          text: '小程序开发',
+          link: '/fe-small-code/小程序开发'
         },
         { text: '微前端', 
           items: [

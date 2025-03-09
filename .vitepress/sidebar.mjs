@@ -18,7 +18,8 @@ export default {
     ]
   }
   ],
-  '/fe-components/': setSidebar('/fe-components/')
+  '/fe-components/': setSidebar('/fe-components/'),
+  '/fe-small-code/': setSidebar('/fe-small-code/')
   ,
   //  '/other/': [
   //   {
