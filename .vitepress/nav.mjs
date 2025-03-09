@@ -72,6 +72,7 @@ export default [
       items: [
         { text: '代码通用缩写表', link: '/other/代码通用缩写表/' },
         { text: '前端Web系统架构设计', link: '/other/前端Web系统架构设计/' },
+        { text: '如何搭建并部署自己的博客网站', link: '/other/如何搭建并部署自己的博客网站/' },
       ]
      }
   ];
