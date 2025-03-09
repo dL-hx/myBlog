@@ -28,4 +28,6 @@ features:
 
 <VisitorPanel />
 
+<!-- 添加五彩纸屑插件 -->
+<Confetti />
 

@@ -3,9 +3,11 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { inBrowser } from 'vitepress'
 import Layout from './myLayout.vue'
-import NotFound from './components/NotFound.vue'
 import busuanzi from "busuanzi.pure.js";
+
 import VisitorPanel from "./components/VisitorPanel.vue";
+import NotFound from './components/NotFound.vue'
+import Confetti from './components/Confetti.vue'
 
 import './style.css'
 
@@ -23,6 +25,7 @@ export default {
   enhanceApp( ctx ) {
     const { app, router, siteData } = ctx;
     app.component("VisitorPanel", VisitorPanel);
+    app.component("Confetti", Confetti);
 
     if (inBrowser) {
       router.onAfterPageLoad  = () => {

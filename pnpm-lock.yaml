@@ -11,6 +11,9 @@ devDependencies:
   busuanzi.pure.js:
     specifier: ^1.0.3
     version: 1.0.3
+  canvas-confetti:
+    specifier: ^1.9.3
+    version: 1.9.3
   vitepress:
     specifier: ^1.6.3
     version: 1.6.3(@algolia/client-search@5.20.4)(search-insights@2.17.3)
@@ -957,6 +960,10 @@ packages:
 
   /busuanzi.pure.js@1.0.3:
     resolution: {integrity: sha512-tPULdyx+8NNb9geZYDpktKmHAYx9f2LEOBaHyWCaM7iPEMIa/43KgYAUluuU7YG9UFSOFpj4dO7Nj2Vlu3V9Rg==}
+    dev: true
+
+  /canvas-confetti@1.9.3:
+    resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
     dev: true
 
   /ccount@2.0.1:
