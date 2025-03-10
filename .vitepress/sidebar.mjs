@@ -18,10 +18,10 @@ export default {
     ]
   }
   ],
-  '/fe-mobx/': setSidebar('/fe-mobx/'),
+  'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
 
-  '/fe-components/': setSidebar('/fe-components/'),
-  '/fe-small-code/': setSidebar('/fe-small-code/')
+  'docs/fe-components/': setSidebar('/docs/fe-components/'),
+  'docs/fe-small-code/': setSidebar('/docs/fe-small-code/')
   ,
   //  '/other/': [
   //   {
@@ -32,7 +32,7 @@ export default {
   //   }
   //  ]
 
-  '/other/':  setSidebar('/other/')
+  'docs/other/':  setSidebar('/docs/other/')
 
 
   // '/fe/': [{

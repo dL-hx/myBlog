@@ -46,7 +46,7 @@ function getList(parmas,path1,pathname){
                 continue
             }
             let link=`${pathname}${name}`
-            link=link.replace("/docs","").replace(".md","")
+            link=link.replace(".md","")
             res.push({
                 text:name.replace(".md",""),
                 link:link
