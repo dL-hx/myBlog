@@ -2,6 +2,7 @@
 <template #doc-after>
       <div style="margin-top: 24px">
         <Giscus
+          v-if="route.path !== '/api-examples.html'"
           :key="page.filePath"
           repo="dL-hx/myBlog"
           repo-id="R_kgDOOFC3bQ"
@@ -23,8 +24,13 @@
 import Giscus from "@giscus/vue";
 import DefaultTheme from "vitepress/theme";
 import { watch } from "vue";
-import { inBrowser, useData } from "vitepress";
- 
+import { inBrowser, useData , useRoute} from "vitepress";
+
+// 判断路由等于/api-examples,不加载giscus组件
+const route = useRoute()
+
+// console.log('route===')
+// console.log(route)
 const { isDark, page } = useData();
  
 const { Layout } = DefaultTheme;

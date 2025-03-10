@@ -10,9 +10,12 @@ import busuanzi from "busuanzi.pure.js";
 import VisitorPanel from "./components/VisitorPanel.vue";
 import NotFound from './components/NotFound.vue'
 import Confetti from './components/Confetti.vue'
+import AllPage from './components/AllPage.vue'
 
 import 'vitepress-plugin-nprogress/lib/css/index.css'
 import './style.css'
+
+
 
 /** @type {import('vitepress').Theme} */
 export default {
@@ -44,6 +47,7 @@ export default {
     const { app, router, siteData } = ctx;
     app.component("VisitorPanel", VisitorPanel);
     app.component("Confetti", Confetti);
+    app.component("AllPage", AllPage);
 
     vitepressNprogress(ctx);
     if (inBrowser) {
