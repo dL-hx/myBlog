@@ -7,7 +7,7 @@ import sidebar  from './sidebar.mjs'
 export default defineConfig({
   base: "/myBlog/",
   title: "小李科技的博客-文档站",
-  description: "A VitePress Site",
+  description: "一个VitePress博客",
   head: [
     ["link", { rel: "icon", href: "logo.svg" }],
   ],
