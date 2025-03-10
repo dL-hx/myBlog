@@ -92,7 +92,7 @@ console.log(computedYearMap)
 }
 
 .post-link::before {
-  content: "•";
+  content: "";
   position: absolute;
   left: -1rem;
 }
