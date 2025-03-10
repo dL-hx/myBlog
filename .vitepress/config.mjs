@@ -5,7 +5,7 @@ import sidebar  from './sidebar.mjs'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  // base: "/myBlog/",
+  // base: "/myBlog/", // 部署github.io需要打开这个设置,现在不用了
   title: "小李科技的博客-文档站",
   description: "一个VitePress博客",
   head: [
