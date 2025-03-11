@@ -66,7 +66,7 @@ export default [
       ]
       },
      { text: '运维', link: '/docs/ops/' }, 
-     { text: '所有项目', link: '/docs/markdown-examples' },
+     { text: '所有项目', link: '/all-pages' },
      {
       text: '其他',
       items: [

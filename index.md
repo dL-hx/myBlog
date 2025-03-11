@@ -15,7 +15,7 @@ hero:
       link: /markdown-examples
     - theme: alt
       text: 所有博客
-      link: /api-examples
+      link: /all-pages
 
 features:
   - title: 🍊 阅读

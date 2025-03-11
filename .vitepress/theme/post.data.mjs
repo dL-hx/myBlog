@@ -9,10 +9,10 @@ const getGitTimestamp = (filePath) => {
     try {
         // 获取文件首次提交时间
         const output = execSync(
-            `git log --format=%cI --reverse -- "${filePath}"`,
+            `git log --format=%cI -- "${filePath}"`,  // 移除 --reverse 参数
             { encoding: 'utf-8' }
-        ).trim().split('\n')[0]; // 取第一行记录
-        
+        ).trim().split('\n')[0];
+        // console.log('===a')
         return output ? new Date(output) : new Date();
     } catch (e) {
         return new Date();
@@ -23,8 +23,8 @@ export default createContentLoader("docs/*/*.md", {
         const postMap = {};
         const yearMap = {};
         const tagMap= {};
-        console.log('raw===')
-        console.log(raw)
+        // console.log('raw===')
+        // console.log(raw)
 
 
         const posts=raw
@@ -49,8 +49,7 @@ export default createContentLoader("docs/*/*.md", {
                 if(frontmatter?.tags) {
                     tags= [...tags, ...frontmatter.tags];
                 }
-                console.log('11')
-                console.log(tags)
+              
                 const result = {
                     title: title,
                     url,

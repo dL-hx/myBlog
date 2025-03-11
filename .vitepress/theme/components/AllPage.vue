@@ -1,39 +1,65 @@
 <script  setup>
-import  {  computed  }  from  'vue'
-import    {  data  }    from  '../post.data';
-const  {  yearMap,postMap  }  =  data
-const  yearList  =  Object.keys(yearMap).sort((a,  b)  =>  b  -  a);  //  按年份降序排序
-const  computedYearMap  =  computed(()=>  {
-    let  result  =  {}
-    for(let  key  in  yearMap)  {
-        result[key]  =  yearMap[key].map(url  =>  postMap[url])
-    }
-    return  result
+import { computed, ref, onMounted, onBeforeUnmount } from "vue"; // 新增引用
+import { data } from "../post.data";
+const { yearMap, postMap } = data;
+const yearList = Object.keys(yearMap).sort((a, b) => b - a); //  按年份降序排序
+const computedYearMap = computed(() => {
+  let result = {};
+  for (let key in yearMap) {
+    result[key] = yearMap[key].map((url) => postMap[url]);
+  }
+  return result;
+});
+
+// 添加设备检测逻辑
+
+const isMobile = ref(false) // 改为响应式 ref
+
+// 窗口变化处理函数
+const checkMobile = () => {
+   isMobile.value = window.innerWidth < 768 // 示例：改为 768px 以下视为移动端
+}
+
+onMounted(() => {
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
 })
-console.log('computedYearMap===')
-console.log(computedYearMap)
+
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', checkMobile)
+})
+
 </script>
 
 <template>
   <div class="article-container">
     <div v-for="year in yearList" :key="year">
       <div v-text="year" class="year-title"></div>
-    <div v-for="(article, index2) in computedYearMap[year]" :key="index2" class="article-item">
-    <div class="post-info">
-        <a v-text="article.title" :href="article.url" class="post-link" target="_blank"></a>
-
-    </div>
-    <div  class="post-date">
-         <span 
-                v-for="(tag, index) in article.tags" 
-                :key="index" 
-                class="post-tag"
-            >
-                {{ tag }}
-         </span>
-        <span v-text="article.date.string"></span>
-    </div>
-    </div>
+      <div
+        v-for="(article, index2) in computedYearMap[year]"
+        :key="index2"
+         class="article-item"
+        :class="{ 'vertical': isMobile }"
+      >
+        <div class="post-info">
+          <a
+            v-text="article.title"
+            :href="article.url"
+            class="post-link"
+            target="_blank"
+          ></a>
+        </div>
+        <div class="post-date">
+          <span
+            v-for="(tag, index) in article.tags"
+            :key="index"
+            class="post-tag"
+          >
+            {{ tag }}
+          </span>
+          <span v-text="article.date.string"></span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -60,6 +86,12 @@ console.log(computedYearMap)
   padding: 8px 12px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
+}
+
+.article-item.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 }
 
 .meta-container {
