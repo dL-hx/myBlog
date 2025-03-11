@@ -6,8 +6,8 @@ export default [
       items: [
         { text: 'CSS基础', 
           items: [
-            { text: 'CSS基础', link: '/docs/fe/css-basee/' },
-            { text: 'CSS布局', link: '/docs/fe/css-layout/' },
+            { text: 'CSS基础', link: '/docs/fe-css/css-base/' },
+            { text: 'CSS布局', link: '/docs/fe-css/css-layout/' },
           ]
         },
         { text: 'React数据流', 

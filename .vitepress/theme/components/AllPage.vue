@@ -1,45 +1,102 @@
-<script  setup>
+<script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from "vue"; // 新增引用
 import { data } from "../post.data";
-const { yearMap, postMap } = data;
+
+const { tagMap, yearMap, postMap } = data;
+
+const tags = Object.keys(tagMap);
+
+const computedTagMap = computed(() => {
+  let result = {};
+  for (let key in tagMap) {
+    result[key] = tagMap[key].map((url) => postMap[url]);
+  }
+  return result;
+});
+
+const currentTag = ref(null);
+function onTagClick(newTag) {
+  currentTag.value = currentTag.value === newTag ? null : newTag;
+}
+
 const yearList = Object.keys(yearMap).sort((a, b) => b - a); //  按年份降序排序
+// const computedYearMap = computed(() => {
+//   let result = {};
+//   for (let key in yearMap) {
+//     result[key] = yearMap[key].map((url) => postMap[url]);
+//   }
+//   return result;
+// });
+
+const selectedTag = ref(null) // 改为单个值存储选中标签
+
 const computedYearMap = computed(() => {
   let result = {};
-  for (let key in yearMap) {
-    result[key] = yearMap[key].map((url) => postMap[url]);
-  }
+
+  // 获取所有文章并过滤
+  const allPosts = Object.values(postMap).filter(post => {
+    return !selectedTag.value || post.tags.includes(selectedTag.value)
+  });
+
+  // 按年份重新分组
+  allPosts.forEach((post) => {
+    const year = new Date(post.date.string).getFullYear();
+    if (!result[year]) {
+      result[year] = [];
+    }
+    result[year].push(post);
+  });
+
   return result;
 });
 
 // 添加设备检测逻辑
 
-const isMobile = ref(false) // 改为响应式 ref
+const isMobile = ref(false); // 改为响应式 ref
 
 // 窗口变化处理函数
 const checkMobile = () => {
-   isMobile.value = window.innerWidth < 768 // 示例：改为 768px 以下视为移动端
-}
+  isMobile.value = window.innerWidth < 768; // 示例：改为 768px 以下视为移动端
+};
 
 onMounted(() => {
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-})
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+});
 
 onBeforeUnmount(() => {
-    window.removeEventListener('resize', checkMobile)
-})
-
+  window.removeEventListener("resize", checkMobile);
+});
 </script>
 
 <template>
   <div class="article-container">
+   <div class="tag-container">
+    <label 
+      v-for="(tag, i) in tags" 
+      :key="i"
+      class="tag-item"
+      :class="{ selected: selectedTag === tag }"
+    >
+      <input 
+        type="radio" 
+        v-model="selectedTag"
+        :value="tag"
+        class="checkbox-input"
+        @click="selectedTag = selectedTag === tag ? null : tag"  
+      >
+      <span>{{ tag }}</span>
+      <span class="tag-count">{{ computedTagMap[tag].length }}</span>
+    </label>
+  </div>
+
     <div v-for="year in yearList" :key="year">
       <div v-text="year" class="year-title"></div>
       <div
         v-for="(article, index2) in computedYearMap[year]"
         :key="index2"
-         class="article-item"
-        :class="{ 'vertical': isMobile }"
+        class="article-item"
+        :class="{ vertical: isMobile }"
       >
         <div class="post-info">
           <a
@@ -65,6 +122,49 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tag-item {
+  display: block;
+  padding: 4px 8px;
+  /* color: var(--vp-button-brand-text);
+  background-color: var(--vp-button-brand-bg);
+  border: 1px solid var(--vp-button-brand-bg); */
+  cursor: pointer;
+  /* border-radius: 16px; */
+  /* transition: all 0.2s ease; */
+}
+
+.tag-item:hover {
+  /* color: var(--vp-c-brand); */
+  /* transform: translateY(-2px); */
+}
+
+.tag-count {
+  margin-left: 8px;
+  color: var(--vp-button-brand-text);
+  font-weight: bold;
+}
+
+
+.tag-count.selected {
+  /* color: var(--vp-button-brand-bg) !important; */
+}
+
+
+/* 选中状态样式 */
+.tag-item.selected {
+  /* color: var(--vp-button-brand-bg) !important;
+  border: 1px solid var(--vp-button-brand-bg) !important; */
+  /* background: var(--vp-button-brand-text) !important; */
+}
+
+/* ----- */
 .article-container {
   max-width: 1024px;
   width: 100%;
@@ -89,9 +189,9 @@ onBeforeUnmount(() => {
 }
 
 .article-item.vertical {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .meta-container {

@@ -4,6 +4,10 @@ import { statSync } from 'fs'
 
 import { resolve } from 'path'
 
+import tagDic from '../tags.mjs'
+
+const tagKeys = Object.keys(tagDic);
+
 // @TODO: 同步获取,在数量大的时候会缓慢
 const getGitTimestamp = (filePath) => {
     try {
@@ -39,9 +43,12 @@ export default createContentLoader("docs/*/*.md", {
                 const filePath = resolve( './', url1)
                 //   // 获取文件状态信息
                   const stats = statSync(filePath)
-                  console.log('gitDate',gitDate)
+                //   console.log('gitDate',gitDate)
 
-                let tags= [url.split("/")[2]];
+                const tempTagKey = url.split("/")[2];
+
+                let tags= tagKeys.includes(tempTagKey) ? [tagDic[tempTagKey]]: [tempTagKey];
+
                 // 找到 url 最后一个 / 之后的内容
                 let title = url.substring(url.lastIndexOf("/") + 1)
                 //    判断有没有.html后缀,如果有就去掉
