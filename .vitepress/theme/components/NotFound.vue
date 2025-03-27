@@ -3,7 +3,7 @@
 
         <script src="https://volunteer.cdn-go.cn/404/latest/404.js"
 
-            maincolor="#f00" jumptime="-1"  jumptarget="https://dl-hx.github.io/myBlog/" tips="404" error="" charset="utf-8">
+            maincolor="#f00" jumptime="-1"  jumptarget="https://dl-hxblog.netlify.app/" tips="404" error="" charset="utf-8">
 
         </script>
 

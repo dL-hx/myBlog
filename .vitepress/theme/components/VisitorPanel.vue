@@ -29,7 +29,7 @@
   const onLinkUmiHandle = () => {
     if (inBrowser) {
       // window.open( "https://zhangzhangww.github.io/VitePress/","_blank" );
-      window.open( "https://dl-hx.github.io/myBlog/","_blank" );
+      window.open( "https://dl-hxblog.netlify.app/","_blank" );
     }
   };
   </script>
