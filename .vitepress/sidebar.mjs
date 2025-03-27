@@ -33,7 +33,7 @@ export default {
   //  ]
 
   'docs/ops-docker/':  setSidebar('/docs/ops-docker/'),
-  'docs/ops-k8s/':  setSidebar('/docs/ops-k8s/'),
+  // 'docs/ops-k8s/':  setSidebar('/docs/ops-k8s/'),
   'docs/other/':  setSidebar('/docs/other/')
 
 
