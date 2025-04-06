@@ -96,11 +96,11 @@
 
 > 对软件方便的进行**部署**, 体验Docker部署一个wordPress应用
 >
-> https://www.bilibili.com/video/BV1Nf4y127gj
+> + https://www.bilibili.com/video/BV1Nf4y127gj
 >
-> https://www.bilibili.com/video/BV1fQ1HY2ERj
+> + https://www.bilibili.com/video/BV1fQ1HY2ERj
 >
-> https://mp.weixin.qq.com/s?__biz=Mzg4Mjg4NDgxMQ==&mid=2247483683&idx=1&sn=043625a6614eb02d505eccbe08682b58&chksm=cf4ea887f839219130d984ee901c97c5b8c7e6c7d764b824e55534bd7afecb6c1c269dc4e0d2&token=926087482&lang=zh_CN#rd
+> + https://mp.weixin.qq.com/s?__biz=Mzg4Mjg4NDgxMQ==&mid=2247483683&idx=1&sn=043625a6614eb02d505eccbe08682b58&chksm=cf4ea887f839219130d984ee901c97c5b8c7e6c7d764b824e55534bd7afecb6c1c269dc4e0d2&token=926087482&lang=zh_CN#rd
 
 ![image-20250406113301306](../be-docker/assets/image-20250406113301306.png)
 
