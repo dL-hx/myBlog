@@ -122,3 +122,29 @@
 
 
 ![image-20250406113603448](../be-docker/assets/image-20250406113603448.png)
+
+
+
+
+
+
+
+## 第二章 Docker环境的各种搭建方法
+
+### 2.1 dk安装简介
+
+社区版本
+
+收费版本
+
+mac/windows版本
+
+通过安装软件创建虚拟机环境, `通过vmware 创建虚拟机环境<linux>`
+
+https://docs.docker.com/desktop/setup/install/windows-install/
+
+
+
+all release notes : https://docs.docker.com/desktop/release-notes/
+
+![image-20250411083540307](../be-docker/assets/image-20250411083540307.png)
