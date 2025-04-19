@@ -66,7 +66,7 @@ conda remove -n myTrader --all
 
 ## 下载包
 
-### 使用 conda 命令
+使用 conda 命令
 ####  基本安装
 conda install 包名
 ####  指定版本安装
@@ -80,24 +80,25 @@ $ conda install numpy=1.24.3
 
 ####  基本删除命令
 conda uninstall 包名
-####  示例：删除 numpy 包
+
+示例：删除 numpy 包
 $ conda uninstall numpy
 只会删除环境中的包，不会删除`pkgs_dirs`中的包
 
 
-
+## 项目实际用法
 :::tip
 项目实际用法
-#### 创建环境
++ **创建环境**
 conda create -n myTrader
-#### 激活环境
++ **激活环境**
 conda activate myTrader
-#### 安装需要的包（例如numpy）
++ **安装需要的包（例如numpy）**
 conda install numpy
 
-#### 在vscode 或者pycharm中，设置环境为我们的虚拟环境`myTrader`
++ **在vscode 或者pycharm中，设置环境为我们的虚拟环境`myTrader`**
 
-#### 然后删除环境
++ **然后删除环境**
 conda remove -n myTrader --all
 ![img_5.png](assets/Anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_5.png)
 
@@ -108,5 +109,5 @@ conda remove -n myTrader --all
 
 ![img_6.png](assets/Anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_6.png)
 
-![img_7.png](assets/Anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_7.png)
 
+![img_9.png](assets/Anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_9.png)
