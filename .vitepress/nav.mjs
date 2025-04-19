@@ -88,6 +88,10 @@ export default [
         text: "如何搭建并部署自己的博客网站",
         link: "/docs/other/如何搭建并部署自己的博客网站/",
       },
+      {
+        text: "Anaconda常用命令",
+        link: "/docs/other/Anaconda常用命令/",
+      },
     ],
   },
 ];
