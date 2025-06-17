@@ -16,7 +16,6 @@ const getGitTimestamp = (filePath) => {
             `git log --format=%cI -- "${filePath}"`,  // 移除 --reverse 参数
             { encoding: 'utf-8' }
         ).trim().split('\n')[0];
-        // console.log('===a')
         return output ? new Date(output) : new Date();
     } catch (e) {
         return new Date();
@@ -27,21 +26,18 @@ export default createContentLoader("docs/*/*.md", {
         const postMap = {};
         const yearMap = {};
         const tagMap= {};
-        // console.log('raw===')
-        // console.log(raw)
-
 
         const posts=raw
             .map(({url,frontmatter}) => {
-                console.log('frontmatter',frontmatter)
-                console.log('url',url)
+                // console.log('frontmatter',frontmatter)
+                // console.log('url',url)
                 let url1 = url.replace(".html", ".md").replace("/docs", "docs")
                 const gitDate = getGitTimestamp(url1)
                 const pad = n => n.toString().padStart(2, '0')
 
-                //   // 获取文件物理路径
+                // 获取文件物理路径
                 const filePath = resolve( './', url1)
-                //   // 获取文件状态信息
+                // 获取文件状态信息
                   const stats = statSync(filePath)
                 //   console.log('gitDate',gitDate)
 

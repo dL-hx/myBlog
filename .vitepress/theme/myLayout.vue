@@ -29,8 +29,7 @@ import { inBrowser, useData , useRoute} from "vitepress";
 // 判断路由等于/all-pages,不加载giscus组件
 const route = useRoute()
 
-// console.log('route===')
-// console.log(route)
+
 const { isDark, page } = useData();
  
 const { Layout } = DefaultTheme;

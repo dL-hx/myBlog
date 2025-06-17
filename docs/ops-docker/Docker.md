@@ -143,8 +143,22 @@ mac/windows版本
 
 https://docs.docker.com/desktop/setup/install/windows-install/
 
+[10分钟掌握Docker Desktop安装及使用](https://www.bilibili.com/video/BV1Vk4y1V7bV/?spm_id_from=333.337.search-card.all.click&vd_source=631062e9ff21033189723c8ac931c360)
+
+
+[docker启动报错](https://www.cnblogs.com/lxzcloud/p/18862844)
+
+**play with docker网站体验**
+
+**docker镜像站配置**
 
 
 all release notes : https://docs.docker.com/desktop/release-notes/
 
 ![image-20250411083540307](../be-docker/assets/image-20250411083540307.png)
+
+
+## 第三章 Docker架构与底层技术简介
+### 3.1 docker platform
+![docker platform](assets/Snipaste_2025-06-17_08-24-24.png)
+### 3.2 docker image

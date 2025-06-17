@@ -70,7 +70,7 @@ export const setSidebar=(pathname)=>{
     const files=fs.readdirSync(dirPath)
     //过滤白名单
     const items=intersections(files,WHITE_LIST)
-    console.log(getList(items,dirPath,pathname))
+    // console.log(getList(items,dirPath,pathname))
     //返回目录
     return getList(items,dirPath,pathname)
 }
