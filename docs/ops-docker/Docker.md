@@ -162,3 +162,15 @@ all release notes : https://docs.docker.com/desktop/release-notes/
 ### 3.1 docker platform
 ![docker platform](assets/Snipaste_2025-06-17_08-24-24.png)
 ### 3.2 docker image
+#### 3.2.1 什么是Image
++ 文件与metada的集合（root filesystem）
++ 分层的，并且每一层都可以改变删除文件，成为一个新的image
++ 不同的image可以共享相同的layer（层）
++ image本身是read-only的
+![alt text](image.png)
+
+
+
+::: tip
+Docker 镜像是由一系列只读的 layer 组成的，每个 layer 代表了镜像构建过程中的一次文件系统更改。这些 layer 按顺序堆叠，共同构成完整的文件系统。
+:::
