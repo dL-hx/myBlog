@@ -21,6 +21,12 @@ const WHITE_LIST=[
 //判断是否为文件夹
 const isDirectory=(path)=>fs.lstatSync(path).isDirectory()
  
+// 提取数字部分进行排序的方法
+function extractNumber(text) {
+    const numPart = text.split('-')[0];
+    const num = parseInt(numPart, 10);
+    return isNaN(num) ? Number.MAX_SAFE_INTEGER : num;
+}
 //取差值
 const intersections=(arr1,arr2)=>Array.from(new Set(arr1.filter(item=>!new Set(arr2).has(item))))
 //把方法导出并使用
@@ -55,11 +61,17 @@ function getList(parmas,path1,pathname){
        
     }
     //目录排序
-    var resSort=res.sort((a,b)=>{
-        var aNum=a.text.split('-')[0]
-        var bNum=b.text.split('-')[0]
-        return aNum-bNum
-    })
+    function sortByNumber(arr) {
+        return arr.sort((a, b) => {
+            const aNum = extractNumber(a.text);
+            const bNum = extractNumber(b.text);
+            return aNum - bNum;
+        });
+    }
+
+      const resSort = sortByNumber(res);
+    console.log('res', res);
+    
     return resSort
     
 }

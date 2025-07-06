@@ -23,6 +23,7 @@ export default {
   'docs/fe-css/css-layout/': setSidebar('/docs/fe-css/css-layout/'),
   'docs/fe-redux/': setSidebar('/docs/fe-redux/'),
   'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
+  'docs/hooks.formik/': setSidebar('/docs/hooks.formik/'),
   
   'docs/fe-components/': setSidebar('/docs/fe-components/'),
   'docs/fe-small-components/react': setSidebar('/docs/fe-small-components/react/'),
@@ -55,3 +56,6 @@ export default {
   //   items:setSidebar('/fe/')
   // }]  
 }
+
+console.log('ccc')
+console.log(setSidebar('/docs/hooks.formik/'))
