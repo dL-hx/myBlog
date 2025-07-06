@@ -3,6 +3,7 @@ import { computed, ref, onMounted, onBeforeUnmount } from "vue"; // 新增引用
 import { data } from "../post.data";
 
 const { tagMap, yearMap, postMap } = data;
+console.log(tagMap)
 
 const tags = Object.keys(tagMap);
 
@@ -147,7 +148,7 @@ onBeforeUnmount(() => {
 
 .tag-count {
   margin-left: 8px;
-  color: var(--vp-button-brand-text);
+  color: skyblue;
   font-weight: bold;
 }
 

@@ -21,12 +21,13 @@ const getGitTimestamp = (filePath) => {
         return new Date();
     }
 };
-export default createContentLoader("docs/*/*.md", {
+export default createContentLoader(["docs/*/*.md", "docs/**/*.md"], {
     transform(raw) {
         const postMap = {};
         const yearMap = {};
         const tagMap= {};
 
+        console.log('raw', raw)
         const posts=raw
             .map(({url,frontmatter}) => {
                 // console.log('frontmatter',frontmatter)
