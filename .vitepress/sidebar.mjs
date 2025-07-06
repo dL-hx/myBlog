@@ -18,6 +18,9 @@ export default {
     ]
   }
   ],
+
+  'docs/fe-css/css-base/': setSidebar('/docs/fe-css/css-base/'),
+  'docs/fe-css/css-layout/': setSidebar('/docs/fe-css/css-layout/'),
   'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
 
   'docs/fe-components/': setSidebar('/docs/fe-components/'),

@@ -9,7 +9,7 @@ export default [
         text: "CSS基础",
         items: [
           { text: "CSS基础", link: "/docs/fe-css/css-base/" },
-          { text: "CSS布局", link: "/docs/fe-css/css-layout/" },
+          { text: "CSS布局", link: "/docs/fe-css/css-layout/Flex经典等分布局" },
         ],
       },
 
