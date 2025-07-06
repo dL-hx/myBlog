@@ -2474,7 +2474,7 @@ LESS(.less)  js写的         Sass(.sass, scss) ruby写的
 
 ### 四 响应式布局
 
-[外链图片转存中...(img-9nK1Dt2E-1622964340282)]
+![alt text](assets/Snipaste_2025-07-06_17-11-45.png)
 
 
 
@@ -2484,7 +2484,8 @@ LESS(.less)  js写的         Sass(.sass, scss) ruby写的
 + 修改源码 重新构建
 + 引用Scss源文件修改 变量
 
-[外链图片转存中...(img-xDKZ2N12-1622964340285)]
+![alt text](assets/0e889230bf0102f4d5272842ee238205.png)
+
 
 
 
