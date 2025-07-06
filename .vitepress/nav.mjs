@@ -41,7 +41,7 @@ export default [
       },
       {
         text: "数据可视化",
-        link: "/docs/fe/date-visit/",
+        link: "/docs/fe-date-visit/D3js使用",
       },
       {
         text: "性能优化",

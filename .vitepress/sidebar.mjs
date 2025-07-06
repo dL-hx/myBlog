@@ -26,6 +26,7 @@ export default {
   'docs/hooks.formik/': setSidebar('/docs/hooks.formik/'),
   
   'docs/fe-components/': setSidebar('/docs/fe-components/'),
+  'docs/fe-date-visit/': setSidebar('/docs/fe-date-visit/'),
   'docs/fe-small-components/react': setSidebar('/docs/fe-small-components/react/'),
   'docs/fe-small-components/vue': setSidebar('/docs/fe-small-components/vue/'),
   
