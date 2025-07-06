@@ -57,5 +57,3 @@ export default {
   // }]  
 }
 
-console.log('ccc')
-console.log(setSidebar('/docs/hooks.formik/'))

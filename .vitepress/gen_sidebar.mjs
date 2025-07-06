@@ -70,7 +70,6 @@ function getList(parmas,path1,pathname){
     }
 
       const resSort = sortByNumber(res);
-    console.log('res', res);
     
     return resSort
     

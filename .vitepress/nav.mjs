@@ -26,7 +26,7 @@ export default [
         items: [
           { text: "Redux", link: "/docs/fe-redux/1. redux 学习进阶---Redux核心" },
           { text: "Mobx", link: "/docs/fe-mobx/mobx" },
-          { text: "Hooks.formik", link: "/docs/hooks.formik/1-react useState使用与常见问题" },
+          { text: "Hooks.formik", link: "/docs/hooks.formik/0-ReactHook技巧" },
         ],
       },
       {
