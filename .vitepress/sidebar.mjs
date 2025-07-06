@@ -31,6 +31,7 @@ export default {
   'docs/fe-small-components/vue': setSidebar('/docs/fe-small-components/vue/'),
   
   'docs/fe-perfor-opt/': setSidebar('/docs/fe-perfor-opt/'),
+  'docs/fe-ts/': setSidebar('/docs/fe-ts/'),
 
   //  '/other/': [
   //   {

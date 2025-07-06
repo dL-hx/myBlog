@@ -34,7 +34,7 @@ export default [
         link: "/docs/fe-components/受控组件与非受控组件的选用标准",
       },
       { text: "Nextjs", link: "/docs/fe/nextjs" },
-      { text: "Typescript", link: "/docs/fe/ts" },
+      { text: "Typescript", link: "/docs/fe-ts/0-如何学习TS" },
       {
         text: "前端测试",
         link: "/docs/fe/test/",
