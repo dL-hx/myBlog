@@ -33,6 +33,9 @@ export default {
   'docs/fe-perfor-opt/': setSidebar('/docs/fe-perfor-opt/'),
   'docs/fe-ts/': setSidebar('/docs/fe-ts/'),
 
+  
+  'docs/be-koa/': setSidebar('/docs/be-koa/'),
+
   //  '/other/': [
   //   {
   //    text: '案例',

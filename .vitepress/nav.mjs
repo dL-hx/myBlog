@@ -73,11 +73,11 @@ export default [
       {
         text: "数据库",
         items: [
-          { text: "Mysql", link: "/docs/be/mysql/" },
-          { text: "Mongodb", link: "/docs/be/mongodb/" },
+          { text: "Mysql", link: "/docs/be-mysql/" },
+          { text: "Mongodb", link: "/docs/be-mongodb/" },
         ],
       },
-      { text: "Koa", link: "/docs/be/koa/" },
+      { text: "Koa", link: "/docs/be-koa/Koa 入门" },
     ],
   },
   {
