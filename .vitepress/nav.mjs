@@ -45,7 +45,7 @@ export default [
       },
       {
         text: "性能优化",
-        link: "/docs/fe/perfor-opt/",
+        link: "/docs/fe-perfor-opt/webpack-------路径优化alias",
       },
       {
         text: "小程序开发",
