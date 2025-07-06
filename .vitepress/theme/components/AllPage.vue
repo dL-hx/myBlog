@@ -3,7 +3,6 @@ import { computed, ref, onMounted, onBeforeUnmount } from "vue"; // 新增引用
 import { data } from "../post.data";
 
 const { tagMap, yearMap, postMap } = data;
-console.log(tagMap)
 
 const tags = Object.keys(tagMap);
 

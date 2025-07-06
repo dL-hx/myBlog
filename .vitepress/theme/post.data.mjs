@@ -27,7 +27,6 @@ export default createContentLoader(["docs/*/*.md", "docs/**/*.md"], {
         const yearMap = {};
         const tagMap= {};
 
-        console.log('raw', raw)
         const posts=raw
             .map(({url,frontmatter}) => {
                 // console.log('frontmatter',frontmatter)
