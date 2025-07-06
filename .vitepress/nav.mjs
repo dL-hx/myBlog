@@ -12,6 +12,15 @@ export default [
           { text: "CSS布局", link: "/docs/fe-css/css-layout/" },
         ],
       },
+
+      {
+        text: "前端小组件",
+        items: [
+          { text: "React小组件", link: "/docs/fe-small-components/react/移动端上拉加载，下拉刷新实现方案" },
+          { text: "Vue小组件", link: "/docs/fe-small-components/vue/Vue3---路由优化（刷新时候，在当前路由）" },
+        ],
+      },
+
       {
         text: "React数据流",
         items: [

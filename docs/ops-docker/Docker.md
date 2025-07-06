@@ -167,8 +167,7 @@ all release notes : https://docs.docker.com/desktop/release-notes/
 + 分层的，并且每一层都可以改变删除文件，成为一个新的image
 + 不同的image可以共享相同的layer（层）
 + image本身是read-only的
-![alt text](assets/image.png)
-
+![alt text](assets/Snipaste_2025-07-01_08-22-55.png)
 
 
 ::: tip
@@ -182,3 +181,21 @@ Docker 镜像是由一系列只读的 layer 组成的，每个 layer 代表了�
 
 
 #### 3.2.2 Image镜像的获取
++ 1. 通过Docker file 获取
+![alt text](assets/Snipaste_2025-07-01_08-22-15.png)
++ 2. 从registry获取
++ https://hub.docker.com
++ docker镜像站
+![alt text](assets/Snipaste_2025-07-01_08-26-40.png)
+
++ 拉取docker镜像命令 ， 在终端terminal中执行
+```shell
+sudo docker pull ubuntu:14.04
+
+sudo docker image ls
+```
+![alt text](assets/Snipaste_2025-07-01_08-37-01.png)
+
+### 3.3 DIY BaseImage
+
+base

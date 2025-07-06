@@ -14,15 +14,16 @@ export default {
     collapsed: true,
     items:[
       { text: 'Markdown案例', link: '/markdown-examples' },
-    { text: 'Runtime API Examples', link: '/api-examples' }
+      { text: 'Runtime API Examples', link: '/api-examples' }
     ]
   }
   ],
   'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
 
   'docs/fe-components/': setSidebar('/docs/fe-components/'),
-  'docs/fe-small-code/': setSidebar('/docs/fe-small-code/')
-  ,
+  'docs/fe-small-components/react': setSidebar('/docs/fe-small-components/react/'),
+  'docs/fe-small-components/vue': setSidebar('/docs/fe-small-components/vue/'),
+
   //  '/other/': [
   //   {
   //    text: '案例',
