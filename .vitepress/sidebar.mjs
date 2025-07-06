@@ -21,6 +21,7 @@ export default {
 
   'docs/fe-css/css-base/': setSidebar('/docs/fe-css/css-base/'),
   'docs/fe-css/css-layout/': setSidebar('/docs/fe-css/css-layout/'),
+  'docs/fe-redux/': setSidebar('/docs/fe-redux/'),
   'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
   
   'docs/fe-components/': setSidebar('/docs/fe-components/'),
@@ -28,7 +29,7 @@ export default {
   'docs/fe-small-components/vue': setSidebar('/docs/fe-small-components/vue/'),
   
   'docs/fe-perfor-opt/': setSidebar('/docs/fe-perfor-opt/'),
-  
+
   //  '/other/': [
   //   {
   //    text: '案例',

@@ -24,7 +24,7 @@ export default [
       {
         text: "React数据流",
         items: [
-          { text: "Redux", link: "/docs/fe-redux/" },
+          { text: "Redux", link: "/docs/fe-redux/1. redux 学习进阶---Redux核心.md" },
           { text: "Mobx", link: "/docs/fe-mobx/mobx" },
           { text: "Hooks.formik", link: "/docs/fe/react-router/" },
         ],
