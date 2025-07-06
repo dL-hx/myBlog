@@ -16,7 +16,7 @@ export default [
       {
         text: "前端小组件",
         items: [
-          { text: "React小组件", link: "/docs/fe-small-components/react/移动端上拉加载，下拉刷新实现方案" },
+          { text: "React小组件", link: "/docs/fe-small-components/react/React18-列表数据实现用户删除、批量删除" },
           { text: "Vue小组件", link: "/docs/fe-small-components/vue/Vue3---路由优化（刷新时候，在当前路由）" },
         ],
       },
