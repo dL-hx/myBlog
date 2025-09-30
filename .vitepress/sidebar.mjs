@@ -22,6 +22,7 @@ export default {
   'docs/fe-css/css-base/': setSidebar('/docs/fe-css/css-base/'),
   'docs/fe-css/css-layout/': setSidebar('/docs/fe-css/css-layout/'),
   'docs/fe-css/css-effect/': setSidebar('/docs/fe-css/css-effect/'),
+  'docs/fe-css/css-tailwind/': setSidebar('/docs/fe-css/css-tailwind/'),
   'docs/fe-redux/': setSidebar('/docs/fe-redux/'),
   'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
   'docs/hooks.formik/': setSidebar('/docs/hooks.formik/'),

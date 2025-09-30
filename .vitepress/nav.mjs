@@ -11,6 +11,7 @@ export default [
           { text: "CSS基础", link: "/docs/fe-css/css-base/CSS 基础" },
           { text: "CSS布局", link: "/docs/fe-css/css-layout/Flex经典等分布局" },
           { text: "CSS特效", link: "/docs/fe-css/css-effect/文字渐变" },
+          { text: "TailwindCSS", link: "/docs/fe-css/css-tailwind/TailwindCSS" },
         ],
       },
 
