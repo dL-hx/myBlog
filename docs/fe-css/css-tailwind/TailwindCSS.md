@@ -101,7 +101,23 @@ export default defineConfig({
 })
 ```
 
+#### 如何编译tailwindcss， 输出为一个css文件
 
+再将编译生成出的css文件引入 .html文件中
+
+```json
+{
+  // ... 其他配置 ...
+  "scripts": {
+    "start": "vitepress dev",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
++   "build:tailwind": "npx tailwindcss -i ./src/styles/tailwind.css -o .src/tailwind.output.css --minify"
+  },
+  // ... 其他配置 ...
+
+```
 #### 核心概念
 ##### 使用原子类进行样式设置
 每个类名代表一个 单一，不可再分的CSS属性
@@ -467,6 +483,361 @@ export default defineConfig({
 
 
 ## 二 Tailwind CSS 进阶
+
+### 2.1 举例说明 css ,cssinjs ,tailwindcss的使用技巧与方案价值体现
+
+#### module css 
+- 变量复用
+  - CSS3 变量 --primary: pink, tokens
+```css
+:root{
+  --color-primary: pink;
+  --bg-primary: white;
+
+  --margin:2px;
+  --padding:2px;
+}
+```
+- BEM命名规范，
+
+```css
+  - 举例：
+  - .card {}
+  - .card__header {}
+  - .card__body {}
+  - .card--primary {}
+  - .card__body--primary {}
+```
+- Flex， Grid布局
+
+#### cssinjs
+
+- 动态样式
+- 样式隔离
+- less sass嵌套规则
+
+`Header.tsx`
+```jsx
+import styles from './Header.module.less';
+
+function Header() {
+  return (
+    <header className={styles.header}>
+      <div className={styles.logo}>MyApp</div>
+      <nav className={styles.nav}>
+        <a href="/" className={styles.link}>首页</a>
+        <a href="/about" className={styles.link}>关于</a>
+        <a href="/contact" className={styles.link}>联系</a>
+      </nav>
+    </header>
+  )
+}
+
+export default Header;
+
+
+
+```
+
+`Header.module.less`
+```css
+.header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #3b82f6;
+}
+```
+
+
+#### styled-components定义组件
+`index.css`
+
+```css
+:root {
+  /* 主色调 */
+  --color-primary: #1890ff;
+  --color-primary-hover: #40a9ff;
+  --color-primary-active: #096dd9;
+  
+  /* 中性色 */
+  --color-text: rgba(0, 0, 0, 0.88);
+  --color-text-secondary: rgba(0, 0, 0, 0.65);
+  --color-border: #d9d9d9;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f5f5f5;
+  
+  /* 功能色 */
+  --color-success: #52c41a;
+  --color-warning: #faad14;
+  --color-error: #ff4d4f;
+  --color-info: #1890ff;
+  
+  /* 状态色 */
+  --color-disabled: rgba(0, 0, 0, 0.25);
+  --color-disabled-bg: #f5f5f5;
+}
+```
+
+
+然后在你的主样式文件中引入这个变量文件：
+
+`index.css`
+
+```css
+@import './variables.css';
+
+/* 其他全局样式 */
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+```
+
+
+使用这些变量的示例
+
+```css
+.button {
+  background-color: var(--color-primary);
+  color: white;
+  border: 1px solid var(--color-border);
+}
+
+.button:hover {
+  background-color: var(--color-primary-hover);
+}
+```
+#### 1. 组件代码 (Button.tsx)
++ 安装依赖
++ 确保已安装 styled-components 和 @types/styled-components：
+
+```bash
+$ pnpm add styled-components @types/styled-components -D
+```
+
+```tsx
+import styled from 'styled-components';
+
+// 定义按钮类型
+type ButtonType = 'primary' | 'secondary' | 'ghost' | 'danger';
+type ButtonSize = 'small' | 'medium' | 'large';
+
+type ButtonProps = {
+  type?: ButtonType;
+  size?: ButtonSize;
+  children: React.ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+  className?: string;
+};
+
+const Button = ({ 
+  type = 'primary',
+  size = 'medium',
+  children, 
+  onClick, 
+  disabled = false,
+  className 
+}: ButtonProps) => {
+  return (
+    <StyledButton 
+      $type={type}
+      $size={size}
+      onClick={onClick}
+      disabled={disabled}
+      className={className}
+    >
+      {children}
+    </StyledButton>
+  );
+};
+
+// 样式定义
+const StyledButton = styled.button<{ 
+  $type: ButtonType; 
+  $size: ButtonSize 
+}>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid;
+  font-weight: 500;
+  white-space: nowrap;
+
+  /* 尺寸样式 */
+  ${({ $size }) => {
+    switch ($size) {
+      case 'small':
+        return `
+          padding: 4px 8px;
+          font-size: 12px;
+        `;
+      case 'medium':
+        return `
+          padding: 8px 16px;
+          font-size: 14px;
+        `;
+      case 'large':
+        return `
+          padding: 12px 24px;
+          font-size: 16px;
+        `;
+      default:
+        return '';
+    }
+  }}
+
+  /* 类型样式 */
+  ${({ $type }) => {
+    switch ($type) {
+      case 'primary':
+        return `
+          background-color: #1890ff;
+          color: white;
+          border-color: #1890ff;
+          &:hover {
+            background-color: #40a9ff;
+            border-color: #40a9ff;
+          }
+          &:active {
+            background-color: #096dd9;
+            border-color: #096dd9;
+          }
+        `;
+      case 'secondary':
+        return `
+          background-color: #f5f5f5;
+          color: rgba(0, 0, 0, 0.88);
+          border-color: #d9d9d9;
+          &:hover {
+            color: #1890ff;
+            border-color: #1890ff;
+          }
+          &:active {
+            color: #096dd9;
+            border-color: #096dd9;
+          }
+        `;
+      case 'ghost':
+        return `
+          background-color: transparent;
+          color: rgba(0, 0, 0, 0.88);
+          border-color: transparent;
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.06);
+            color: #1890ff;
+          }
+          &:active {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #096dd9;
+          }
+        `;
+      case 'danger':
+        return `
+          background-color: #ff4d4f;
+          color: white;
+          border-color: #ff4d4f;
+          &:hover {
+            background-color: #ff7875;
+            border-color: #ff7875;
+          }
+          &:active {
+            background-color: #d9363e;
+            border-color: #d9363e;
+          }
+        `;
+      default:
+        return '';
+    }
+  }}
+
+  /* 禁用状态 */
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+`;
+
+export default Button;
+```
+#### 2. 使用示例 (App.tsx)
+
+```jsx
+import Button from './components/Button';
+
+function App() {
+  return (
+    <div style={{ 
+      display: 'flex', 
+      gap: '12px', 
+      padding: '20px',
+      flexDirection: 'column',
+      maxWidth: '300px'
+    }}>
+      <Button type="primary">主要按钮</Button>
+      <Button type="secondary">次要按钮</Button>
+      <Button type="ghost">幽灵按钮</Button>
+      <Button type="danger">危险按钮</Button>
+      
+      <Button type="primary" size="small">小按钮</Button>
+      <Button type="primary" size="medium">中按钮</Button>
+      <Button type="primary" size="large">大按钮</Button>
+      
+      <Button 
+        type="primary" 
+        onClick={() => alert('按钮被点击')}
+      >
+        点击我
+      </Button>
+      
+      <Button type="primary" disabled>
+        禁用按钮
+      </Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+
+#### tailwindcss
+
+- 原子化类名
+- 样式集中管理 ，`tailwind.config.js`
+
+
+
+#### 总结
++ 客户端渲染方式(vue, react): cssinjs
++ 服务端渲染： modulecss, tailwindcss
 
 
 ## 三 AI时代 Tailwind CSS 最佳实践
