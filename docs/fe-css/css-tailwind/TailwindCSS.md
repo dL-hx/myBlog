@@ -631,6 +631,11 @@ body {
   background-color: var(--color-primary-hover);
 }
 ```
+
+## 三 AI时代 Tailwind CSS 最佳实践
+
+## 四 Tailwind CSS 组件封装实战
+
 #### 1. 组件代码 (Button.tsx)
 + 安装依赖
 + 确保已安装 styled-components 和 @types/styled-components：
@@ -840,8 +845,6 @@ export default App;
 + 服务端渲染： modulecss, tailwindcss
 
 
-## 三 AI时代 Tailwind CSS 最佳实践
 
-## 四 Tailwind CSS 组件封装实战
 
 
