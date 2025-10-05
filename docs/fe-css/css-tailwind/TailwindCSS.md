@@ -1,5 +1,7 @@
 # Tailwind踩坑实录
 
+`https://github.com/dL-hx/myBlog/blob/master/docs/fe-css/css-tailwind/tailwindcss.zip`
+
 
 ## 一 Tailwind CSS 基础
 ### 1.1 有了解过那些样式实现方案？ 为什么 AI 产品都选择 Tailwind CSS 作为样式方案 ？
