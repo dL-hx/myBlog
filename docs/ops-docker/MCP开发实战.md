@@ -251,6 +251,46 @@ $ mcp dev main.py
 
 ![alt text](assets/Snipaste_2025-10-17_17-45-27.png)
 
+```python
+from mcp.server import FastMCP
+from mcp.types import TextContent
+import httpx
+import json
+
+app = FastMCP('weather-server')
+
+HOST = 'https://restapi.amap.com'
+KEY = 'ee50d4053a18506d66a0f826de884cd1'
+
+
+@app.tool(name='query-weather', description='查询指定地区的天气情况')
+async def query_weather(address: str) -> list[TextContent]:
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.get(f'{HOST}/v3/geocode/geo', params={'key': KEY, 'address': address})
+            response.raise_for_status()  # 检查HTTP状态码
+
+            resp_dict = json.loads(response.text)
+            if resp_dict['status'] != "1":
+                return [TextContent(f'查询{address}的天气情况失败：{resp_dict["info"]}')]
+
+            city = resp_dict['geocodes'][0]['adcode']
+
+            response_city = await client.get(f'{HOST}/v3/weather/weatherInfo', params={'key': KEY, 'city': city})
+            response_city.raise_for_status()  # 检查HTTP状态码
+
+            response_city_dict = json.loads(response_city.text)
+            if response_city_dict['status'] != "1":
+                return [TextContent(f'查询{address}的天气情况失败：{resp_dict["info"]}')]
+            return [TextContent(type='text', text=response_city.text)]
+
+        except Exception as e:
+            return e
+
+
+if __name__ == '__main__':
+    app.run(transport='stdio')
+```
 
 ```json
 {
