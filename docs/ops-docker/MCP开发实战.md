@@ -90,8 +90,8 @@ mcp服务的导航网站，集成了**大量的MCP服务器**
 
 ## 1.3 MCP 工作原理
 
-**枚举函数**
-**入参 + 出参 function Call**
++ **枚举函数**
++ **入参 + 出参 function Call**
 
 ![alt text](assets/Snipaste_2025-10-14_15-30-35.png)
 
@@ -142,6 +142,9 @@ mcp服务的导航网站，集成了**大量的MCP服务器**
 
   > 都是为了解决**大模型无法连接外部数据的问题**
 
+  > 总结： **MCP** 让 **Fuction Call**变得更加标准
+
+
   ![alt text](assets/Snipaste_2025-10-14_15-12-06.png)
 
   > 如何解决这些问题： **告诉大模型， 如何与外界通信**，引入**函数概念**。
@@ -149,7 +152,125 @@ mcp服务的导航网站，集成了**大量的MCP服务器**
 
 ![alt text](assets/Snipaste_2025-10-14_15-12-49.png)
 
-> **MCP** 解决函数封装，调用的问题
+> **MCP** 解决函数封装，调用的问题, 通过 MCP更方便的调用大模型
+
 
 
 ![alt text](assets/Snipaste_2025-10-14_16-56-40.png)
+
+
+
+> 总结： **MCP** 是大模型与外部数据的桥梁，通过 **MCP** 可以让大模型调用外部数据， 也可以让外部数据调用大模型。
+
+
+  ## 2.4 实际演示 MCP 与 Fuction Call的关系
+
+
+  ## 3.1 热门的MCP客户端工具有哪些
+
+  ![alt text](assets/Snipaste_2025-10-15_10-47-02.png)
+
+  更好与 **MCP server端对接**
+
+  ![alt text](assets/Snipaste_2025-10-15_10-51-42.png)
+
+
+ ## 3.2 VSCode 插件 Cline演示 MCP的调用
+
+![alt text](assets/Snipaste_2025-10-15_11-06-40.png)
+
+[https://blog.csdn.net/qq_41035650/article/details/147838142](https://blog.csdn.net/qq_41035650/article/details/147838142)
+
+因为国内网络的原因， 还有windows系统的环境问题，所以需要再找办法解决调用不通的问题。
+
+## 3.3 LiteLLM代理API 分析Cline与大模型的交互原理(上)
+
+## 3.4 LiteLLM代理API 分析Cline与大模型的交互原理(下)
+
+## 3.5 Cherry Studio演示MCP Server调用
+
+
+## 3.6 LiteLLM代理API分析CherryStudio与大模型的交互原理
+
+## 3.7 Cherry Studio 基于 sse 协议演示MCP Server调用
+
+
+## 3.8 Cursor演示MCP Server调用
+
+
+## 3.9 MCP 客户端使用总结
+
+## 4.0 热门实用的 MCP Server 使用分享（持续更新）
+
+## 4.2 时下热门的MCP Server来源梳理
+
+## 4.3 高德地图MCP Server演示
+
+## 4.4 PostgreSQL MCP Server演示
+
+## 4.5 Git MCP Server演示
+
+## 4.6 Github MCP Server演示
+
+## 4.7 Fetch MCP Server演示
+
+## 4.8 Redis MCP Server踩坑演示
+
+## 4.9 Puppeteer+PlayWright MCP Server演示
+
+## 4.10 Kubernetes MCP Server演示
+
+## 4.11 FireCrawl爬虫MCP Server演示
+
+## 4.12 Zapier MCP Server 演示
+
+
+
+## 5.0 自定义MCP Server与MCP Client入门级开发实战
+
+## 5.1 自定义MCP Server开发
+
+尝试自己开发mcp server , 语言 选择 python
+
++ uv安装
+
+```shell
+$ pip install uv
+
+// 天气查询的mcp server 初始化
+$ uv init weather-server
+
+$ uv add "mcp[cli]" httpx
+```
+
+
+在python 项目目录下运行, 启动mcp server 调试
+```shell
+$ mcp dev main.py
+```
+
+![alt text](assets/Snipaste_2025-10-17_17-45-27.png)
+
+
+```json
+{
+  "mcpServers": {
+    "weather-server": {
+      "disabled": false,
+      "timeout": 60,
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\Lenovo\\Desktop\\weather-server",
+        "run",
+        "main.py"
+      ]
+    }
+  }
+}
+```
+
+
+
+
