@@ -386,8 +386,246 @@ if __name__ == "__main__":
 
 
 
-## 5.2 自定义实现 MCP Client开发
+## 5.3 自定义实现 MCP Client开发
+
+
+## 5.4 (Node版本) 自定义实现MCP 加法计算 
+
+## 项目初始化
+https://docs.mcpservers.cn/quickstart/server#node
+
+
+```bash
+npm init -y
+cnpm install @modelcontextprotocol/sdk zod@3.1.12
+cnpm install -D @types/node typescript
+```
+
+调试项目
+```bash
+ npx @modelcontextprotocol/inspector node ./build/index.js
+```
+
+`src/index.ts`
+
+```ts
+/**
+ * 新手版 MCP 计算器服务器
+ * 
+ * 这是一个简化的MCP服务器示例，适合初学者学习
+ * 提供基本的加减乘除运算功能
+ * 
+ * 安装依赖：
+ * npm install @modelcontextprotocol/sdk zod
+ * 
+ * 编译运行：
+ * npx tsc
+ * node build/server/index.js
+ */
+ 
+// 导入需要的模块
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+ 
+// 创建服务器
+const server = new McpServer({
+  name: "simple-calculator",
+  version: "1.0.0",
+  capabilities: {
+    resources: {},
+    tools: {},
+  },
+});
+ 
+// 定义数字验证规则
+const NumberSchema = z.number().describe("数字");
+ 
+// 加法工具
+server.tool(
+  "add",
+  "计算两个数字相加",
+  {
+    a: NumberSchema,
+    b: NumberSchema,
+  },
+  async ({ a, b }) => {
+    const result = a + b;
+    
+    return {
+      content: [
+        {
+          type: "text",
+          text: `${a} + ${b} = ${result}`,
+        },
+      ],
+    };
+  }
+);
+ 
+// 减法工具
+server.tool(
+  "subtract",
+  "计算两个数字相减",
+  {
+    a: NumberSchema,
+    b: NumberSchema,
+  },
+  async ({ a, b }) => {
+    const result = a - b;
+    
+    return {
+      content: [
+        {
+          type: "text",
+          text: `${a} - ${b} = ${result}`,
+        },
+      ],
+    };
+  }
+);
+ 
+// 乘法工具
+server.tool(
+  "multiply",
+  "计算两个数字相乘",
+  {
+    a: NumberSchema,
+    b: NumberSchema,
+  },
+  async ({ a, b }) => {
+    const result = a * b;
+    
+    return {
+      content: [
+        {
+          type: "text",
+          text: `${a} × ${b} = ${result}`,
+        },
+      ],
+    };
+  }
+);
+ 
+// 除法工具
+server.tool(
+  "divide",
+  "计算两个数字相除",
+  {
+    a: NumberSchema,
+    b: NumberSchema,
+  },
+  async ({ a, b }) => {
+    // 检查除数是否为零
+    if (b === 0) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: "错误：不能除以零",
+          },
+        ],
+      };
+    }
+    
+    const result = a / b;
+    
+    return {
+      content: [
+        {
+          type: "text",
+          text: `${a} ÷ ${b} = ${result}`,
+        },
+      ],
+    };
+  }
+);
+ 
+// 启动服务器
+async function main() {
+  try {
+    const transport = new StdioServerTransport();
+    await server.connect(transport);
+    console.error("计算器服务器已启动");
+  } catch (error) {
+    console.error("启动失败:", error);
+    process.exit(1);
+  }
+}
+ 
+main().catch((error) => {
+  console.error("运行出错:", error);
+  process.exit(1);
+});
+ 
+/*
+使用方法：
+1. 安装依赖包
+   npm install @modelcontextprotocol/sdk zod
+2. 编译 TypeScript
+   npx tsc
+3. 在 VS Code 中配置 .vscode/mcp.json：
+   {
+     "servers": {
+       "calculator": {
+         "type": "stdio",
+         "command": "node",
+         "args": ["你的绝对路径/server/index.js"]
+       }
+     }
+   }
+4. 重启 VS Code，然后就可以使用计算功能了
+代码说明：
+- McpServer: 创建 MCP 服务器
+- server.tool(): 定义可用的工具/功能
+- NumberSchema: 验证输入必须是数字
+- async/await: 处理异步操作
+- StdioServerTransport: 使用标准输入输出通信
+每个工具包含：
+- 名称 (如 "add")
+- 描述 (如 "计算两个数字相加")
+- 参数定义 (如 {a: NumberSchema, b: NumberSchema})
+- 实现函数 (执行具体的计算逻辑)
+*/
+ 
+```
+
+
+## 生成js文件并运行
+执行如下代码编译ts文件为js文件，默认生成在同一路径
+
+**这将会将当前项目下的所有ts代码转换为js**
+
+
+```bash
+npx tsc
+```
+
+
+使用inspector 启动客户端，并指定服务端代码路径
+`http://localhost:6274/?MCP_PROXY_AUTH_TOKEN=aac1710fc963b2cb032bb451c843067a13159f4e0d3b8d21db58fc412bf02239#resources`
+
+
+```bash
+npx @modelcontextprotocol/inspector node ./build/index.js
+```
+
+
+## 结果
+这样就可以在UI界面尽情测试了
+![alt text](assets/Snipaste_2025-10-18_17-14-53.png)
 
 
 
 
+
+
+## 8.1 MCP ChatBot 聊天机器人项目
+
+![alt text](assets/Snipaste_2025-10-18_14-37-42.png)
+
+
+
+- [1]: https://www.bilibili.com/video/BV1gj33zhESt?spm_id_from=333.788.videopod.sections&vd_source=631062e9ff21033189723c8ac931c360
+
+- [2]: https://blog.csdn.net/m0_72678953/article/details/149042341
