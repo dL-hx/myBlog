@@ -246,6 +246,8 @@ $ uv add "mcp[cli]" httpx
 
 在python 项目目录下运行, 启动mcp server 调试
 ```shell
+$ python main.py 
+或
 $ mcp dev main.py
 ```
 
@@ -310,6 +312,55 @@ if __name__ == '__main__':
   }
 }
 ```
+
+
+## 5.2 自定义实现MCP 加法计算
+
+![alt text](assets/Snipaste_2025-10-18_11-02-10.png)
+
+```python
+"""
+一个简单的mcp_server, 只提供了一个加法工具
+"""
+from mcp.server.fastmcp import FastMCP
+
+# 创建一个MCP服务器
+mcp = FastMCP("add-server")
+
+# 创建一个加法工具
+@mcp.tool("add")
+def add(a: int, b: int) -> int:
+    """两个数相加"""
+    return a + b
+
+if __name__ == "__main__":
+    mcp.run(transport='stdio')
+
+
+```
+
+```json
+{
+  "mcpServers": {
+    "add-server": {
+      "disabled": false,
+      "timeout": 60,
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\Lenovo\\Desktop\\weather-server",
+        "run",
+        "add.py"
+      ]
+    }
+  }
+}
+```
+
+
+
+## 5.2 自定义实现 MCP Client开发
 
 
 
