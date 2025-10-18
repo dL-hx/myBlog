@@ -211,6 +211,32 @@ mcp服务的导航网站，集成了**大量的MCP服务器**
 ## 4.5 Git MCP Server演示
 
 ## 4.6 Github MCP Server演示
+```json
+{
+  "mcpServers": {
+    "github": {
+      "disabled": false,
+      "timeout": 60,
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "...."
+      }
+    }
+  }
+}
+```
+
+```
+帮我查询，我的github项目
+```
+
+
+![alt text](assets/Snipaste_2025-10-18_12-12-41.png)
 
 ## 4.7 Fetch MCP Server演示
 
