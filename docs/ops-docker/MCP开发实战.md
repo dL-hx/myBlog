@@ -626,6 +626,7 @@ npx @modelcontextprotocol/inspector node ./build/index.js
 
 
 
-- [1]: https://www.bilibili.com/video/BV1gj33zhESt?spm_id_from=333.788.videopod.sections&vd_source=631062e9ff21033189723c8ac931c360
+`[1]: https://www.bilibili.com/video/BV1gj33zhESt?spm_id_from=333.788.videopod.sections&vd_source=631062e9ff21033189723c8ac931c360`
 
-- [2]: https://blog.csdn.net/m0_72678953/article/details/149042341
+
+`[2]: https://blog.csdn.net/m0_72678953/article/details/149042341`
