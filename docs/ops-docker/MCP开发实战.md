@@ -391,7 +391,7 @@ if __name__ == "__main__":
 
 ## 5.4 (Node版本) 自定义实现MCP 加法计算 
 
-## 项目初始化
+### 项目初始化
 https://docs.mcpservers.cn/quickstart/server#node
 
 
@@ -591,7 +591,7 @@ main().catch((error) => {
 ```
 
 
-## 生成js文件并运行
+### 生成js文件并运行
 执行如下代码编译ts文件为js文件，默认生成在同一路径
 
 **这将会将当前项目下的所有ts代码转换为js**
@@ -611,7 +611,7 @@ npx @modelcontextprotocol/inspector node ./build/index.js
 ```
 
 
-## 结果
+### 结果
 这样就可以在UI界面尽情测试了
 ![alt text](assets/Snipaste_2025-10-18_17-14-53.png)
 
