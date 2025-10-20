@@ -681,7 +681,7 @@ $ npm publish --access public
 ``` bash
 $ npx -y  mcp-chatbot-server-leo
 ```
-``
+
 再次输入提示词，发现已经使用了 `npm`网站的包，调用工具
 
 ```
@@ -692,13 +692,123 @@ $ npx -y  mcp-chatbot-server-leo
 ![alt text](assets/Snipaste_2025-10-20_11-05-19.png)
 
 
+## 5.5 写一个爬取微信公众号文章的函数功能
+> 实现一个http函数，用于爬取微信公众号内容
+```bash
+npm init -y
+cnpm install @modelcontextprotocol/sdk zod@3
+cnpm install -D @types/node typescript
+cnpm install -D playwright@1.53.2  
+```
+
+
+```ts
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
+import { z } from "zod";
+import { chromium } from "playwright";
+import experss from "express";
+
+const server = new McpServer({
+  name: "mcp-server-wx",
+  version: "1.0.0",
+});
+
+server.tool(
+  "crawlWeChatContent",
+  "爬取获取网页内容",
+  {
+    url: z.string().url().describe("需要爬取的网页链接"),
+  },
+  async ({ url }) => {
+    const browser = await chromium.launch({ headless: true });
+    const page = await browser.newPage();
+    try {
+      await page.goto(url, { waitUntil: "domcontentloaded", timeout: 20000 });
+      await page.waitForSelector("#container-inner", { timeout: 10000 });
+      const content = await page.$eval("#container-inner", (el) => el.textContent?.trim());
+      const weixinText = content ? content : "没有爬取到网页数据";
+      return {
+        content: [
+          {
+            type: "text",
+            text: weixinText,
+          },
+        ],
+      };
+    } catch (error) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: "爬取网页失败了",
+          },
+        ],
+      };
+    } finally {
+      // 关闭浏览器
+      await browser.close();
+    }
+  }
+);
+
+const transport = new StreamableHTTPServerTransport({
+  sessionIdGenerator: () => crypto.randomUUID(),
+});
+await server.connect(transport);
+
+const app = experss();
+app.post("/weixin", (req, res) => {
+  transport.handleRequest(req, res).catch(console.error);
+});
+
+app.listen(7800, () => {
+  console.log("mcp服务启动成功，端口是7800");
+});
+
+```
+
+
+```json
+
+
+{"mcpServers": {
+"mcp-server-wx":{
+  "type": "streamableHttp",
+  "url": "http://localhost:7800/weixin", 
+  "headers":{
+  "Content-Type":"application/json",
+  "Authorization": "Bearer your-token"
+  }
+ }
+}
+}
+```
+
+导入本地服务器，进行测试`http://localhost:7800/weixin`
+![alt text](assets/Snipaste_2025-10-20_17-36-27.png)
+
+```
+使用mcp-server-wx 工具，爬取https://www.scowboy-blog.top/article/9db8d3d7-5f9a-4fad-a143-55cc8c077c51 , 简单总结下这篇文章的内容
+
+```
+![alt text](assets/Snipaste_2025-10-20_17-49-41.png)
+![alt text](assets/Snipaste_2025-10-20_17-57-48.png)
+
+
+`客户端， 与服务器， 与大模型进行交互`
+
+
+
+
+
 ## 8.1 MCP ChatBot 聊天机器人项目
 
 ![alt text](assets/Snipaste_2025-10-18_14-37-42.png)
 
 
 
-`[1]: https://www.bilibili.com/video/BV1gj33zhESt?spm_id_from=333.788.videopod.sections&vd_source=631062e9ff21033189723c8ac931c360`
+`[1]: https://www.bilibili.com/video/BV1gj33zhESt`
 
 
 `[2]: https://blog.csdn.net/m0_72678953/article/details/149042341`
