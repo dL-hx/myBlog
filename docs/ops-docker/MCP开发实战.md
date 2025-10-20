@@ -615,9 +615,81 @@ npx @modelcontextprotocol/inspector node ./build/index.js
 这样就可以在UI界面尽情测试了
 ![alt text](assets/Snipaste_2025-10-18_17-14-53.png)
 
+### 使用cherry studio 调试mcp 项目
+`https://www.cherry-ai.com/download`
+![alt text](assets/Snipaste_2025-10-20_09-59-27.png)
+![alt text](assets/Snipaste_2025-10-20_10-10-08.png)
+![alt text](assets/Snipaste_2025-10-20_10-10-28.png)
+
+复制 这些配置到cherry studio 中
+```json
+{
+  "mcpServers": {
+    "simple-calculator": {
+      "command": "node",
+      "args": ["C:\\Users\\Lenovo\\Desktop\\mcp-chatbot-server\\build\\index.js"]
+    }
+  }
+}
+```
+![alt text](assets/Snipaste_2025-10-20_10-20-51.png)
+`https://modelcontextprotocol.io/docs/develop/build-server#node`
+
+`复制路径`
+![alt text](assets/Snipaste_2025-10-20_10-23-30.png)
+
+`复制mcp名称`，然后点击确定
+
+![alt text](assets/Snipaste_2025-10-20_10-22-45.png)
+
+`返回首页`， `选中这个mcp服务`进行调试
+![alt text](assets/Snipaste_2025-10-20_10-26-13.png)
 
 
+输入提示词 ，让大模型调用工具，然后测试是否调用工具成功 
 
+```
+33+78 等于多少，应该使用工具simple-calculator 调用
+```
+
+![alt text](assets/Snipaste_2025-10-20_10-31-31.png)
+
+
+### 发布到npm上
+```bash
+$ npm build
+$ npm login
+$ npm publish --access public
+```
+![alt text](assets/Snipaste_2025-10-20_10-48-10.png)
+
+发布成功之后，重新配置`mcp服务`，这时从`npm`官网安装这个包
+
+```json
+{
+  "mcpServers": {
+    "simple-calculator": {
+      "command": "npx",
+      "args": ["-y", "mcp-chatbot-server-leo"]
+    }
+  }
+}
+```
+
+`测试是否安装成功  `
+![alt text](assets/Snipaste_2025-10-20_11-05-25.png)
+``` bash
+$ npx -y  mcp-chatbot-server-leo
+```
+``
+再次输入提示词，发现已经使用了 `npm`网站的包，调用工具
+
+```
+使用配置的MCP工具simple-calculator来计算100+23。
+```
+
+
+![alt text](assets/Snipaste_2025-10-20_11-05-19.png)
 
 
 ## 8.1 MCP ChatBot 聊天机器人项目
