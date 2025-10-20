@@ -785,6 +785,10 @@ app.listen(7800, () => {
 }
 ```
 
+
+启动项目
++ `npm run build`
++ `npm run start`
 导入本地服务器，进行测试`http://localhost:7800/weixin`
 ![alt text](assets/Snipaste_2025-10-20_17-36-27.png)
 
