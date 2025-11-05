@@ -103,6 +103,12 @@ export default [
         text: "Anaconda常用命令",
         link: "/docs/other/Anaconda常用命令/",
       },
+      {
+        text: "前端面试手写题",
+        link: "/docs/other/前端面试手写题/",
+      },
+
+      
     ],
   },
 ];
