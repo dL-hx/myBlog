@@ -107,7 +107,10 @@ export default [
         text: "前端面试手写题",
         link: "/docs/other/前端面试手写题/",
       },
-
+      {
+        text: "前端面试题",
+        link: "/docs/other/前端面试题/",
+      },
       
     ],
   },
