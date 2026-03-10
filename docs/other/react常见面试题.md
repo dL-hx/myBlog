@@ -1,4 +1,5 @@
 # React 面试题
+
 ## 1. react 组件声明方式
 - 函数组件
 - 类组件
@@ -102,7 +103,7 @@ useInsertionEffect比useLayoutEffect更早， DOM还没有更新
 - Context
 
 ## 16. react-router-dom v6提供了哪些API?
-- Outlet占位符，对标Vue <router-view>
+- Outlet占位符，对标Vue `<router-view>`
 - useAPI
     - useNavigage
 
@@ -122,7 +123,6 @@ useInsertionEffect比useLayoutEffect更早， DOM还没有更新
 ## 19. 什么是Fiber?
 - React 16.x 引入的数据结构，一个对象
 
-```js
 const FiberNode = {
     tag,
     key,
@@ -133,46 +133,4 @@ const FiberNode = {
     sibling,
 
     pendingProps,
-    ....
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
