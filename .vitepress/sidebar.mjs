@@ -23,6 +23,13 @@ export default {
   'docs/fe-css/css-layout/': setSidebar('/docs/fe-css/css-layout/'),
   'docs/fe-css/css-effect/': setSidebar('/docs/fe-css/css-effect/'),
   'docs/fe-css/css-tailwind/': setSidebar('/docs/fe-css/css-tailwind/'),
+  'docs/fe-js/ecmascript-features/': setSidebar('/docs/fe-js/ecmascript-features/'),
+  'docs/fe-js/js-performance/': setSidebar('/docs/fe-js/js-performance/'),
+  'docs/fe-js/typescript/': setSidebar('/docs/fe-js/typescript/'),
+  'docs/fe-js/functional-programming/': setSidebar('/docs/fe-js/functional-programming/'),
+  'docs/fe-js/async-programming/': setSidebar('/docs/fe-js/async-programming/'),
+  'docs/fe-js/modules/': setSidebar('/docs/fe-js/modules/'),
+  'docs/fe-js/promise-source/': setSidebar('/docs/fe-js/promise-source/'),
   'docs/fe-redux/': setSidebar('/docs/fe-redux/'),
   'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
   'docs/hooks.formik/': setSidebar('/docs/hooks.formik/'),
@@ -63,4 +70,3 @@ export default {
   //   items:setSidebar('/fe/')
   // }]  
 }
-

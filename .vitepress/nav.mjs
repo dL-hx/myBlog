@@ -14,6 +14,24 @@ export default [
           { text: "TailwindCSS", link: "/docs/fe-css/css-tailwind/TailwindCSS" },
         ],
       },
+      {
+        text: "JS相关",
+        items: [
+          { text: "ECMAScript 新特性", link: "/docs/fe-js/ecmascript-features/ecmascript新特性" },
+          { text: "JavaScript 性能优化", link: "/docs/fe-js/js-performance/js性能优化" },
+          { text: "TypeScript 语言", link: "/docs/fe-js/typescript/typescript语言" },
+          { text: "Part 1 · 模块一", link: "/docs/fe-js/modules/模块一" },
+        ],
+      },
+      {
+        text: "JS进阶",
+        items: [
+          { text: "函数式编程范式", link: "/docs/fe-js/functional-programming/函数式编程范式" },
+          { text: "异步编程", link: "/docs/fe-js/async-programming/异步编程" },
+          { text: "Promise 源码", link: "/docs/fe-js/promise-source/Promise 源码" },
+          { text: "Part 2 · 模块二", link: "/docs/fe-js/modules/模块二" },
+        ],
+      },
 
       {
         text: "前端小组件",
