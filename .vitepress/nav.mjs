@@ -65,7 +65,18 @@ export default [
       },
       {
         text: "性能优化",
-        link: "/docs/fe-perfor-opt/webpack-------路径优化alias",
+        items: [
+          { text: "CSS、JS的加载与执行", link: "/docs/fe-perfor-opt/CSS、JS的加载与执行" },
+          { text: "懒加载与预加载", link: "/docs/fe-perfor-opt/懒加载与预加载" },
+          { text: "浏览器存储", link: "/docs/fe-perfor-opt/浏览器存储" },
+          { text: "图片相关的优化", link: "/docs/fe-perfor-opt/图片相关的优化" },
+          { text: "重绘与回流", link: "/docs/fe-perfor-opt/重绘与回流" },
+          { text: "资源合并与压缩", link: "/docs/fe-perfor-opt/资源合并与压缩" },
+          
+          { text: "webpack-------路径优化alias", link: "/docs/fe-perfor-opt/webpack-------路径优化alias" },
+          { text: "图标优化-------IconMoon 图标制作", link: "/docs/fe-perfor-opt/图标优化-------IconMoon 图标制作" },
+          { text: "开发过程中那些包应该放到devDependencies,dependencies", link: "/docs/fe-perfor-opt/开发过程中那些包应该放到devDependencies,dependencies" },
+        ],
       },
       {
         text: "小程序开发",
