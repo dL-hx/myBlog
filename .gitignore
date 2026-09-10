@@ -8,3 +8,5 @@ cache
 .cache
 .temp
 *.local
+# Local Netlify folder
+.netlify
