@@ -45,6 +45,8 @@ export default {
 
   
   'docs/be-koa/': setSidebar('/docs/be-koa/'),
+  'docs/be/node-demo/': setSidebar('/docs/be/node-demo/'),
+  'docs/be/node-tools/': setSidebar('/docs/be/node-tools/'),
 
   //  '/other/': [
   //   {

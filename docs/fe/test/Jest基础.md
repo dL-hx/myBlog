@@ -163,7 +163,7 @@ npm i -D @types/jest
 
 或者说只要是 vscode 打开的项目根目录有 @types/jest 这个包就可以了。
 
-这是因为 TS 是从项目根目录下的 node\_modules 查找 @types 类型声明文件的。
+这是因为 TS 是从项目根目录下的 node_modules 查找 @types 类型声明文件的。
 
 ##### 3.2 jest 配置
 
