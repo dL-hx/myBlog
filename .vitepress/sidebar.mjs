@@ -41,6 +41,7 @@ export default {
   
   'docs/fe-perfor-opt/': setSidebar('/docs/fe-perfor-opt/'),
   'docs/fe-ts/': setSidebar('/docs/fe-ts/'),
+  'docs/fe/test/': setSidebar('/docs/fe/test/'),
 
   
   'docs/be-koa/': setSidebar('/docs/be-koa/'),
