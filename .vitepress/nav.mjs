@@ -20,6 +20,7 @@ export default [
           { text: "ECMAScript 新特性", link: "/docs/fe-js/ecmascript-features/ecmascript新特性" },
           { text: "JavaScript 性能优化", link: "/docs/fe-js/js-performance/js性能优化" },
           { text: "TypeScript 语言", link: "/docs/fe-js/typescript/typescript语言" },
+          { text: "DOM事件", link: "/docs/fe-js/dom-events/事件委托与渲染性能" },
           { text: "Part 1 · 模块一", link: "/docs/fe-js/modules/模块一" },
         ],
       },
