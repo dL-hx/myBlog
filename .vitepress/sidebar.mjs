@@ -30,6 +30,7 @@ export default {
   'docs/fe-js/async-programming/': setSidebar('/docs/fe-js/async-programming/'),
   'docs/fe-js/modules/': setSidebar('/docs/fe-js/modules/'),
   'docs/fe-js/promise-source/': setSidebar('/docs/fe-js/promise-source/'),
+  'docs/fe-js/dom-events/': setSidebar('/docs/fe-js/dom-events/'),
   'docs/fe-redux/': setSidebar('/docs/fe-redux/'),
   'docs/fe-mobx/': setSidebar('/docs/fe-mobx/'),
   'docs/hooks.formik/': setSidebar('/docs/hooks.formik/'),
