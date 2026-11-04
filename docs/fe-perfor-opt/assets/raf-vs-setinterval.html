@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>requestAnimationFrame vs setInterval · 对照实验</title>
+<style>
+  :root { --bg: #0f1420; --card: #1a2133; --line: #2a3448; --txt: #e6ebf5; --sub: #8b97ad; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 16px 60px;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--txt);
+    max-width: 920px; margin: 0 auto;
+  }
+  h1 { font-size: 22px; margin: 0 0 6px; }
+  .desc { color: var(--sub); font-size: 13px; line-height: 1.7; margin-bottom: 22px; }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 18px; }
+  .panel h2 { font-size: 15px; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: normal; }
+  .t-raf { background: rgba(64,158,255,.15); color: #5cb6ff; }
+  .t-int { background: rgba(230,162,60,.15); color: #e6a23c; }
+  .track { position: relative; height: 70px; background: #0b0f1a; border-radius: 8px; overflow: hidden; }
+  .box {
+    position: absolute; top: 12px; left: 0;
+    width: 46px; height: 46px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;
+  }
+  #boxRaf { background: linear-gradient(135deg, #409eff, #67c23a); }
+  #boxInt { background: linear-gradient(135deg, #e6a23c, #f56c6c); }
+  .meta { display: flex; gap: 18px; margin-top: 10px; font-size: 12px; color: var(--sub); }
+  .meta b { color: var(--txt); font-variant-numeric: tabular-nums; }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+  button {
+    padding: 9px 18px; border: 1px solid var(--line); border-radius: 8px;
+    background: #232c42; color: var(--txt); font-size: 14px; cursor: pointer; transition: .15s;
+  }
+  button:hover { border-color: #409eff; }
+  button.primary { background: #409eff; border-color: #409eff; }
+  button.warn { background: #e6a23c; border-color: #e6a23c; color: #1a1a1a; font-weight: 600; }
+  button.gray { background: #3a4358; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .kv { font-size: 12px; line-height: 1.9; color: var(--sub); }
+  .kv b { color: #e6ebf5; }
+  code { background: #0b0f1a; padding: 1px 6px; border-radius: 4px; font-size: 11px; color: #7ec8ff; }
+  .foot { font-size: 12px; color: var(--sub); margin-top: 24px; line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<h1>🎬 requestAnimationFrame vs setInterval</h1>
+<p class="desc">
+  同一个“方块向右移动”的需求，用两种方式各跑一条赛道。<br>
+  打开控制台切到 Performance / 渲染面板，或干脆把标签页切到后台再切回来，差别一眼就懂。
+</p>
+
+<div class="btns">
+  <button class="primary" id="start">▶ 一起起飞</button>
+  <button class="warn" id="stop">⏹ 一起停下</button>
+  <button class="gray" id="reset">↺ 一起重置</button>
+</div>
+
+<!-- ============ 赛道 A：rAF ============ -->
+<div class="panel">
+  <h2>赛道 A：requestAnimationFrame <span class="tag t-raf">推荐</span></h2>
+  <div class="track"><div class="box" id="boxRaf">rAF</div></div>
+  <div class="meta">
+    <span>位置：<b id="posRaf">0</b> px</span>
+    <span>速度：<b id="spdRaf">0</b></span>
+    <span>状态：<b id="stRaf">空闲</b></span>
+  </div>
+</div>
+
+<!-- ============ 赛道 B：setInterval ============ -->
+<div class="panel">
+  <h2>赛道 B：setInterval(16ms) <span class="tag t-int">老写法</span></h2>
+  <div class="track"><div class="box" id="boxInt">INT</div></div>
+  <div class="meta">
+    <span>位置：<b id="posInt">0</b> px</span>
+    <span>定时器ID：<b id="tidInt">-</b></span>
+    <span>状态：<b id="stInt">空闲</b></span>
+  </div>
+</div>
+
+<!-- ============ 关键差异 ============ -->
+<div class="panel">
+  <h2>🧠 三种“循环”写法对照</h2>
+  <div class="grid">
+    <div>
+      <div class="kv">
+        <b>① rAF 自己调自己（本例赛道 A）</b><br>
+        <code>function tick(){ update(); rafId=requestAnimationFrame(tick); }</code><br>
+        帧驱动：浏览器说“该画了”才执行。
+      </div>
+    </div>
+    <div>
+      <div class="kv">
+        <b>② setInterval 定时硬怼（本例赛道 B）</b><br>
+        <code>timer=setInterval(()=>update(),16)</code><br>
+        时间驱动：16ms 到点就跑，不管画没画完。
+      </div>
+    </div>
+    <div>
+      <div class="kv">
+        <b>③ CSS transition（声明式）</b><br>
+        <code>.box{transition:2s}.fly{transform:translateX(300px)}</code><br>
+        只加类名，浏览器自己算中间帧，最省心。
+      </div>
+    </div>
+    <div>
+      <div class="kv">
+        <b>刹车方式</b><br>
+        rAF → <code>cancelAnimationFrame(id)</code><br>
+        INT → <code>clearInterval(id)</code><br>
+        CSS → 移除类名 / 改 <code>transition: none</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="foot">
+  💡 体验技巧：点「一起起飞」后把标签页切到后台挂几秒再切回来。<br>
+  赛道 A 会停在离开时的位置（后台不跑），赛道 B 的定时器照样在攒，切回来会“跳帧狂奔”。这就是 rAF 更省资源、更稳的原因。
+</p>
+
+<script>
+/* ===================== 赛道 A：requestAnimationFrame ===================== */
+const boxRaf = document.getElementById('boxRaf');
+const posRafEl = document.getElementById('posRaf');
+const spdRafEl = document.getElementById('spdRaf');
+const stRafEl  = document.getElementById('stRaf');
+
+let rafId = null;
+let posRaf = 0;
+let speedRaf = 0;      // 用“加速度”起步，手感更真实
+const maxPos = () => boxRaf.parentElement.clientWidth - boxRaf.clientWidth;
+
+function tickRaf() {
+  // 1. 更新状态（逻辑）
+  speedRaf += (7 - speedRaf) * 0.12;   // 渐近目标速度 7
+  posRaf += speedRaf;
+
+  // 2. 边界判断：到了就停，不再请求下一帧
+  if (posRaf >= maxPos()) {
+    posRaf = maxPos();
+    flushRaf();
+    stRafEl.textContent = '已到达 🎯';
+    rafId = null;
+    return;
+  }
+  flushRaf();
+
+  // 3. 关键：把自己交给浏览器，等下一帧再跑
+  rafId = requestAnimationFrame(tickRaf);
+}
+
+function flushRaf() {
+  boxRaf.style.left = posRaf + 'px';
+  posRafEl.textContent = Math.round(posRaf);
+  spdRafEl.textContent = speedRaf.toFixed(2);
+}
+
+function startRaf() {
+  if (rafId !== null) return;          // 防重复启动
+  if (posRaf >= maxPos()) posRaf = 0;  // 到终点了就从头来
+  speedRaf = 0;
+  stRafEl.textContent = '飞行中 🚀';
+  rafId = requestAnimationFrame(tickRaf);
+}
+
+function stopRaf() {
+  if (rafId === null) return;
+  cancelAnimationFrame(rafId);         // 精准取消“下一帧”
+  rafId = null;
+  speedRaf = 0;
+  stRafEl.textContent = '已暂停 ⏸';
+  spdRafEl.textContent = '0.00';
+}
+
+function resetRaf() {
+  if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+  posRaf = 0; speedRaf = 0;
+  flushRaf();
+  stRafEl.textContent = '空闲';
+}
+
+/* ===================== 赛道 B：setInterval ===================== */
+const boxInt = document.getElementById('boxInt');
+const posIntEl = document.getElementById('posInt');
+const tidIntEl = document.getElementById('tidInt');
+const stIntEl  = document.getElementById('stInt');
+
+let timerId = null;
+let posInt = 0;
+let speedInt = 0;
+
+function flushInt() {
+  boxInt.style.left = posInt + 'px';
+  posIntEl.textContent = Math.round(posInt);
+}
+
+function startInt() {
+  if (timerId !== null) return;        // 防重复：多次点击会开出多个定时器
+  if (posInt >= maxPos()) posInt = 0;
+  speedInt = 0;
+  stIntEl.textContent = '飞行中 🚀';
+
+  // 16ms ≈ 60fps，但这是“愿望值”，实际不一定做得到
+  timerId = setInterval(() => {
+    speedInt += (7 - speedInt) * 0.12;
+    posInt += speedInt;
+    if (posInt >= maxPos()) {
+      posInt = maxPos();
+      flushInt();
+      stIntEl.textContent = '已到达 🎯';
+      clearInterval(timerId);
+      timerId = null;
+      return;
+    }
+    flushInt();
+  }, 16);
+  tidIntEl.textContent = timerId;
+}
+
+function stopInt() {
+  if (timerId === null) return;
+  clearInterval(timerId);
+  timerId = null;
+  speedInt = 0;
+  stIntEl.textContent = '已暂停 ⏸';
+  tidIntEl.textContent = '-';
+}
+
+function resetInt() {
+  if (timerId !== null) { clearInterval(timerId); timerId = null; }
+  posInt = 0; speedInt = 0;
+  flushInt();
+  stIntEl.textContent = '空闲';
+  tidIntEl.textContent = '-';
+}
+
+/* ===================== 统一按钮 ===================== */
+document.getElementById('start').onclick = () => { startRaf(); startInt(); };
+document.getElementById('stop').onclick  = () => { stopRaf();  stopInt();  };
+document.getElementById('reset').onclick = () => { resetRaf(); resetInt(); };
+
+// 窗口缩放时防止方块越界
+window.addEventListener('resize', () => {
+  const max = maxPos();
+  if (posRaf > max) { posRaf = max; flushRaf(); }
+  if (posInt > max) { posInt = max; flushInt(); }
+});
+</script>
+
+</body>
+</html>
