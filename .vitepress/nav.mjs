@@ -75,6 +75,8 @@ export default [
           { text: "重绘与回流", link: "/docs/fe-perfor-opt/重绘与回流" },
           { text: "资源合并与压缩", link: "/docs/fe-perfor-opt/资源合并与压缩" },
           { text: "自定义开发服务", link: "/docs/fe-perfor-opt/自定义开发服务" },
+          { text: "requestAnimationFrame动画循环", link: "/docs/fe-perfor-opt/requestAnimationFrame动画循环" },
+          { text: "ReactTypeScript类型系统实战手册", link: "/docs/fe-perfor-opt/ReactTypeScript类型系统实战手册" },
           { text: "webpack-------路径优化alias", link: "/docs/fe-perfor-opt/webpack-------路径优化alias" },
           { text: "图标优化-------IconMoon 图标制作", link: "/docs/fe-perfor-opt/图标优化-------IconMoon 图标制作" },
           { text: "开发过程中那些包应该放到devDependencies,dependencies", link: "/docs/fe-perfor-opt/开发过程中那些包应该放到devDependencies,dependencies" },
@@ -145,6 +147,14 @@ export default [
       {
         text: "react常见面试题",
         link: "/docs/other/react常见面试题",
+      },
+      {
+        text: "前端工程师完整培养方案",
+        link: "/docs/other/前端工程师完整培养方案",
+      },
+      {
+        text: "前端培养方案-参考答案",
+        link: "/docs/other/前端培养方案-参考答案",
       },
     ],
   },

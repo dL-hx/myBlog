@@ -11,7 +11,7 @@
     "start": "vitepress dev",
     "dev": "vitepress dev",
     "build": "vitepress build",
-    "preview": "netlify deploy"
+    "preview": "npx netlify deploy --build"
   },
   "packageManager": "pnpm@8.6.12"
 }
